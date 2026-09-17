@@ -16,11 +16,11 @@ const en = {
   nav_menu_close: 'Close menu',
 
   // Hero
-  hero_badge: 'Frontend Engineer',
+  hero_badge: 'Senior Frontend Engineer',
   hero_available: 'Available for international opportunities',
-  hero_role: 'Angular • React/Next.js',
+  hero_role: 'Angular • React • Next.js',
   hero_bio:
-    "Frontend specialist in Angular and React/Next.js, working on global projects with multicultural teams, with advanced English (C1). My career combines frontend depth with a full-stack mindset (Node.js, Spring, C#) to discuss architecture and deliver end-to-end solutions focused on accessibility, performance and Developer Experience.",
+    'Frontend engineer with 7+ years of experience building enterprise and digital products end to end. Experienced in frontend architecture, application modernization, technical leadership and product development with Angular, React and Next.js. I currently lead frontend deliveries on global projects at Avangrid and build digital products at Brasa, the company I co-own.',
   hero_location: 'Sorocaba, SP, Brazil',
   hero_languages: 'Portuguese (native) • English (C1)',
   hero_cta_projects: 'View projects',
@@ -101,11 +101,11 @@ const pt: Record<TKey, string> = {
   nav_menu_close: 'Fechar menu',
 
   // Hero
-  hero_badge: 'Frontend Engineer',
+  hero_badge: 'Senior Frontend Engineer',
   hero_available: 'Disponível para oportunidades internacionais',
-  hero_role: 'Angular • React/Next.js',
+  hero_role: 'Angular • React • Next.js',
   hero_bio:
-    'Especialista em frontend com Angular e React/Next.js, atuando em projetos globais com times multiculturais, com inglês avançado (C1). Minha trajetória combina profundidade em frontend com visão fullstack (Node.js, Spring, C#) para discutir arquitetura e entregar soluções ponta a ponta com foco em acessibilidade, performance e Developer Experience.',
+    'Engenheiro de frontend com mais de 7 anos de experiência, atuando em produtos corporativos e digitais de ponta a ponta. Experiência em arquitetura frontend, modernização de aplicações, liderança técnica e desenvolvimento de produtos com Angular, React e Next.js. Atualmente, lidero entregas de frontend em projetos globais na Avangrid e desenvolvo produtos digitais na Brasa, empresa da qual sou sócio.',
   hero_location: 'Sorocaba, SP, Brasil',
   hero_languages: 'Português (nativo) • Inglês (C1)',
   hero_cta_projects: 'Ver projetos',
