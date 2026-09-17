@@ -6,15 +6,6 @@ import type { Testimonial } from '../types';
  */
 export const TESTIMONIALS: Testimonial[] = [
   {
-    name: 'Rodrigo de Matos Alves',
-    role: { en: 'Project Manager / Scrum Master', pt: 'Gerente de Projetos / Scrum Master' },
-    date: 'Jul 2023',
-    text: {
-      pt: 'Thiago é um profissional com grande empatia, tenta sempre equilibrar as dificuldades de criar uma solução com as necessidades de produto, viabilizando construções diferenciadas. Tecnicamente, é uma pessoa com grande conhecimento e não coloca limitações para novos aprendizados. Em projeto presenciei a curva de aprendizado em React, sendo que ele não trabalhava antes. Parabéns pelo profissional que você é e siga sempre evoluindo, Thi!',
-      en: 'Thiago is a professional with great empathy, always balancing the challenges of building a solution with product needs, enabling differentiated builds. Technically, he is someone with deep knowledge and never limits himself to new learning. On the project I witnessed his React learning curve, even though he had not worked with it before. Congratulations on the professional you are - keep evolving, Thi!',
-    },
-  },
-  {
     name: 'Alan Oliveira',
     role: { en: 'Back-end Developer', pt: 'Back-end Developer' },
     date: 'May 2023',

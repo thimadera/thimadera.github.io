@@ -31,11 +31,11 @@ const en = {
   about_title: 'About',
   about_eyebrow: 'Who I am',
   about_p1:
-    "I'm a hands-on Frontend Engineer with 7+ years of experience, currently leading frontend deliveries for Avangrid (USA), a major player in the renewable energy sector, and building Brasa - Presentes & Personalizados from scratch as its owner and product engineer.",
+    'I work best close to the product: understanding the problem, shaping the solution with the team and shipping interfaces people actually use. Today I split my time between enterprise projects at NTT DATA and building the digital operation at Brasa, the company I co-own.',
   about_p2:
-    'My career merges enterprise-grade governance - 5+ years at NTT DATA working with clients like Avangrid and Itaú, mastering Angular, strict CI/CD and systems that cannot fail - with product speed: React, Next.js and cloud infrastructure (Firebase, AWS) to ship and evolve products end to end.',
+    'At NTT DATA I learned to work under enterprise governance - strict CI/CD, accessibility standards and critical systems - for clients like Avangrid and Itaú. At Brasa I apply that same discipline at product speed: I decide the architecture, write the code, own the integrations and evolve the systems that keep the operation running.',
   about_p3:
-    "I led the Angular → React migration at Cubo Itaú, mentor developers, and work with multicultural teams, with advanced English (C1). Everything I build focuses on accessibility (WCAG), performance (Core Web Vitals) and Developer Experience.",
+    'I led the Angular → React migration at Cubo Itaú and now lead frontend deliveries at Avangrid in a multicultural team. I mentor developers and take part in architecture decisions - always with attention to accessibility, performance and Developer Experience.',
   about_fact_exp: 'Years of experience',
   about_fact_global: 'Advanced English',
   about_fact_clients: 'Global enterprise clients',
@@ -63,12 +63,12 @@ const en = {
   skills_title: 'Skills',
   skills_eyebrow: 'Toolbox',
   skills_subtitle:
-    'A focused frontend stack - from enterprise Angular to modern React/Next.js products.',
+    'The technologies and practices I use day to day - from enterprise Angular to modern React/Next.js products.',
 
   // Testimonials
   testimonials_title: 'Recommendations',
   testimonials_eyebrow: 'What people say',
-  testimonials_subtitle: 'Recommendations from colleagues and managers - originally written in Portuguese.',
+  testimonials_subtitle: 'What colleagues and managers say about working with me.',
   testimonials_note: 'Translated from the original Portuguese recommendation.',
   testimonials_all: 'See all recommendations on LinkedIn',
 
@@ -116,11 +116,11 @@ const pt: Record<TKey, string> = {
   about_title: 'Sobre',
   about_eyebrow: 'Quem sou eu',
   about_p1:
-    'Sou Frontend Engineer hands-on com 7+ anos de experiência, atualmente liderando entregas de frontend para a Avangrid (EUA), gigante do setor de energia renovável, e construindo a Brasa - Presentes & Personalizados do zero como sócio e engenheiro de produto.',
+    'Trabalho melhor perto do produto: entendendo o problema, desenhando a solução com o time e entregando interfaces que as pessoas realmente usam. Hoje divido minha rotina entre projetos corporativos na NTT DATA e a construção da operação digital da Brasa, empresa da qual sou sócio.',
   about_p2:
-    'Minha trajetória une a rigidez da governança enterprise - 5+ anos na NTT DATA com clientes como Avangrid e Itaú, dominando Angular, CI/CD rigoroso e sistemas que não podem falhar - com a velocidade de produto: React, Next.js e infraestrutura em nuvem (Firebase, AWS) para construir e evoluir produtos ponta a ponta.',
+    'Na NTT DATA aprendi a trabalhar com governança enterprise - CI/CD rigoroso, padrões de acessibilidade e sistemas críticos - atendendo clientes como Avangrid e Itaú. Na Brasa aplico essa mesma disciplina com velocidade de produto: decido a arquitetura, escrevo o código, cuido das integrações e evoluo os sistemas que sustentam a operação.',
   about_p3:
-    'Liderei a migração Angular → React no Cubo Itaú, faço mentoria de desenvolvedores e trabalho com times multiculturais, com inglês avançado (C1). Tudo o que construo tem foco em acessibilidade (WCAG), performance (Core Web Vitals) e Developer Experience.',
+    'Liderei a migração Angular → React no Cubo Itaú e hoje lidero entregas de frontend na Avangrid, em um time multicultural. Faço mentoria de desenvolvedores e participo das decisões de arquitetura - sempre com atenção a acessibilidade, performance e Developer Experience.',
   about_fact_exp: 'Anos de experiência',
   about_fact_global: 'Inglês avançado',
   about_fact_clients: 'Clientes corporativos globais',
@@ -148,12 +148,12 @@ const pt: Record<TKey, string> = {
   skills_title: 'Skills',
   skills_eyebrow: 'Minhas ferramentas',
   skills_subtitle:
-    'Uma stack frontend enxuta - do Angular enterprise ao React/Next.js moderno.',
+    'Tecnologias e práticas que uso no dia a dia - do Angular enterprise ao React/Next.js moderno.',
 
   // Testimonials
   testimonials_title: 'Recomendações',
   testimonials_eyebrow: 'O que dizem de mim',
-  testimonials_subtitle: 'Recomendações de colegas e gestores - escritas originalmente em português.',
+  testimonials_subtitle: 'O que colegas e gestores dizem sobre trabalhar comigo.',
   testimonials_note: 'Traduzido da recomendação original em português.',
   testimonials_all: 'Ver todas as recomendações no LinkedIn',
 

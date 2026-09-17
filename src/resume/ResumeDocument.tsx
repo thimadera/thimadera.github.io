@@ -4,7 +4,7 @@ import { EXPERIENCE } from '../data/experience';
 import { SKILLS } from '../data/skills';
 import { CONTACT_ITEMS, LANGUAGES, LOCATION, SOCIALS } from '../data/contact';
 import { translations } from '../i18n/translations';
-import { formatDuration, formatPeriod } from '../utils/dates';
+import { formatPeriod } from '../utils/dates';
 
 /**
  * Resume generated on the fly from the same data files as the site
@@ -111,7 +111,6 @@ export function ResumeDocument({ locale }: { locale: Locale }) {
         <View style={styles.rule} />
         <Text style={styles.sectionTitle}>{t.experience_title}</Text>
         {experience.map((entry) => {
-          const duration = formatDuration(entry.start, entry.end, locale);
           return (
           <View
             key={`${entry.company.en}-${entry.start.year}-${entry.start.month ?? 0}`}
@@ -124,7 +123,6 @@ export function ResumeDocument({ locale }: { locale: Locale }) {
             </View>
             <Text style={styles.expRole}>
               {L(entry.role)}
-              {duration ? `  ·  ${duration}` : ''}
             </Text>
             {entry.location && <Text style={styles.expNote}>{L(entry.location)}</Text>}
             {entry.highlights.map((highlight) => (

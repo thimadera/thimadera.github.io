@@ -172,7 +172,9 @@ function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.32) }}
-      className="card group flex flex-col overflow-hidden transition-colors hover:border-accent/40"
+      className={`card group flex flex-col overflow-hidden transition-colors hover:border-accent/40 ${
+        project.featured ? 'md:col-span-2' : ''
+      }`}
     >
       {cover && (
         <button

@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { EXPERIENCE } from '../data/experience';
 import { useI18n } from '../i18n/I18nContext';
 import { Section } from './Section';
-import { formatDuration, formatPeriod } from '../utils/dates';
+import { formatPeriod } from '../utils/dates';
 
 export function Experience() {
   const { t, l, locale } = useI18n();
@@ -12,7 +12,6 @@ export function Experience() {
     <Section id="experience" eyebrow={t('experience_eyebrow')} title={t('experience_title')}>
       <ol className="relative space-y-10 border-l border-border pl-8">
         {EXPERIENCE.map((entry, index) => {
-          const duration = formatDuration(entry.start, entry.end, locale);
           return (
           <motion.li
             key={`${entry.company.en}-${entry.start.year}-${entry.start.month ?? 0}`}
@@ -40,7 +39,6 @@ export function Experience() {
                   <span className="chip border-accent/30 text-accent">{l(entry.badge)}</span>
                 )}
                 <span className="font-mono text-xs text-muted">{formatPeriod(entry.start, entry.end, locale)}</span>
-                {duration && <span className="font-mono text-xs text-muted/70">({duration})</span>}
               </div>
 
               <p className="mt-1 text-sm font-medium text-accent">{l(entry.role)}</p>

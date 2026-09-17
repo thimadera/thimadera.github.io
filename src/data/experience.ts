@@ -21,26 +21,27 @@ export const EXPERIENCE: ExperienceEntry[] = [
     location: { en: 'USA (remote)', pt: 'EUA (remoto)' },
     nested: true,
     current: true,
+    badge: { en: 'Client engagement', pt: 'Alocação' },
     highlights: [
       {
-        en: 'Modernization and performance: refactored legacy systems and took part in the Angular 12 → 16 migration — faster, smoother and more scalable apps, with TypeScript, RxJS and SCSS.',
-        pt: 'Modernização e performance: refatorei sistemas legados e participei da migração Angular 12 → 16 — aplicações mais rápidas, fluidas e escaláveis, com TypeScript, RxJS e SCSS.',
+        en: 'Modernized legacy applications and took part in the Angular 12 → 16 migration, using TypeScript, RxJS and SCSS.',
+        pt: 'Modernizei aplicações legadas e participei da migração de Angular 12 para Angular 16, utilizando TypeScript, RxJS e SCSS.',
       },
       {
-        en: 'Critical projects in the customer portal: built solutions from scratch (already on Angular 21) and reorganized poorly structured apps mid-development — from power outage and move in/move out processes to energy usage charts — with microfrontends (single-spa) and prototyping in Figma.',
-        pt: 'Projetos críticos no portal do cliente: criei soluções do zero (já em Angular 21) e reorganizei aplicações mal estruturadas em andamento — de processos de outage de energia e move in/move out a gráficos de consumo — em microfrontends com single-spa, com prototipagem no Figma.',
+        en: 'Built features for the customer portal, including power outage processes, move-in/move-out and energy usage visualization.',
+        pt: 'Desenvolvi funcionalidades para o portal do cliente, incluindo processos de interrupção de energia, move-in/move-out e visualização de consumo.',
       },
       {
-        en: 'Quality: raised test coverage from 0 to 80% (Jest/Karma), with CI in Jenkins and static analysis in SonarQube.',
-        pt: 'Qualidade: elevei a cobertura de testes de 0 para 80% (Jest/Karma), com integração contínua no Jenkins e análise estática no SonarQube.',
+        en: 'Contributed to organizing the applications into a microfrontends architecture with single-spa.',
+        pt: 'Contribuí para a organização de aplicações em uma arquitetura de microfrontends com single-spa.',
       },
       {
-        en: 'Fullstack mindset: built an API with Java Spring Boot in a dedicated engagement, delivering the frontend end to end.',
-        pt: 'Visão fullstack: criei uma API com Java Spring Boot em atuação pontual, para entregar o frontend de ponta a ponta.',
+        en: 'Raised test coverage from 0 to 80% (Jest/Karma), with continuous integration in Jenkins and static analysis in SonarQube.',
+        pt: 'Aumentei a cobertura de testes de 0 para 80% (Jest/Karma), com integração contínua no Jenkins e análise estática no SonarQube.',
       },
       {
-        en: 'Technical leadership: mentored two junior developers until full autonomy and took part in documenting the Angular 12 → 16 migration and in technology/refactoring decisions — in a global multicultural team (USA, India, Brazil).',
-        pt: 'Liderança técnica: mentorei dois devs juniors até a autonomia completa e fiz parte da documentação da migração Angular 12 → 16 e das decisões de tecnologia e refatoração — em time global multicultural (EUA, Índia, Brasil).',
+        en: 'Took part in technical decisions and architecture documentation, while mentoring two junior developers in a multicultural team (USA, India, Brazil).',
+        pt: 'Atuei em decisões técnicas e documentação de arquitetura, além de orientar dois desenvolvedores juniores em um time multicultural (EUA, Índia, Brasil).',
       },
     ],
   },
@@ -51,22 +52,27 @@ export const EXPERIENCE: ExperienceEntry[] = [
     end: { month: 7, year: 2023 },
     location: { en: 'São Paulo, Brazil', pt: 'São Paulo, Brasil' },
     nested: true,
+    badge: { en: 'Client engagement', pt: 'Alocação' },
     highlights: [
       {
-        en: 'Angular → React migration: took part in the migration of Cubo Itaú\'s customer portal — from Angular 8 to React with Next.js and Styled Components — received the design system in Figma, set up the React project and rebuilt the Angular pages following the new design system, with Angular and React coexisting until completion.',
-        pt: 'Migração Angular → React: participei da migração do portal do cliente do Cubo Itaú — de Angular 8 para React com Next.js e Styled Components — recebi o design system no Figma, criei o projeto React e refiz as páginas que eram em Angular seguindo o novo design system, com Angular e React convivendo até a conclusão.',
+        en: 'Took part in migrating the customer portal from Angular 8 to React with Next.js and Styled Components.',
+        pt: 'Participei da migração do portal do cliente de Angular 8 para React com Next.js e Styled Components.',
       },
       {
-        en: 'Screen development: built screens with complex forms, dynamic data and componentization, refactoring to keep the code scalable.',
-        pt: 'Desenvolvimento de telas: construí telas com formulários complexos, dados dinâmicos e componentização, refatorando para manter o código escalável.',
+        en: 'Set up the React project and implemented pages based on the new design system, using the specifications available in Figma.',
+        pt: 'Estruturei o projeto React e implementei páginas com base no novo design system, utilizando as especificações disponibilizadas no Figma.',
       },
       {
-        en: 'Mentoring: mentored a junior developer in a career transition — she learned Angular and took part in the React migration.',
-        pt: 'Mentoria: mentorei uma dev junior em transição de carreira — ela aprendeu Angular e participou da migração para React.',
+        en: 'Kept Angular and React running side by side until the migration was complete.',
+        pt: 'Durante a transição, mantivemos Angular e React em funcionamento até a conclusão da migração.',
       },
       {
-        en: 'Product and agility: first hands-on experience with agile methodologies — worked in sprints, side by side with PMs and design, delivering business-aligned solutions.',
-        pt: 'Produto e agilidade: primeira experiência prática com metodologias ágeis — atuei em sprints, lado a lado com PMs e design, entregando soluções alinhadas ao negócio.',
+        en: 'Built complex forms and data-driven interfaces, prioritizing componentization and maintainability.',
+        pt: 'Desenvolvi formulários complexos e interfaces com dados dinâmicos, priorizando componentização e manutenção do código.',
+      },
+      {
+        en: 'Mentored a junior developer in a career transition, supporting her Angular learning and her work in the React migration.',
+        pt: 'Orientei uma desenvolvedora júnior em sua transição de carreira, apoiando seu aprendizado de Angular e sua participação na migração para React.',
       },
     ],
   },
@@ -86,12 +92,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
         pt: 'Integrações: conectei ERPs e marketplaces por APIs e webhooks — Olist, Shopify, Shopee e TikTok Shop.',
       },
       {
-        en: 'Fullstack: work end to end — Node.js APIs on Vercel, Firebase Functions, Supabase/Postgres with Prisma and Cloudflare, from database to deploy.',
-        pt: 'Fullstack: atuo ponta a ponta — APIs em Node.js na Vercel, Firebase Functions, Supabase/Postgres com Prisma e Cloudflare, do banco ao deploy.',
-      },
-      {
-        en: 'Sidra: created Sidra, a multi-tenant SaaS for shipping automation that processes 200+ orders per day, replacing the Olist-dependent operation.',
-        pt: 'Sidra: criei a Sidra, SaaS multi-tenant de automação de expedição que processa 200+ pedidos por dia, substituindo a operação dependente do Olist.',
+        en: 'Technical and product ownership: responsible for architecture, integrations and evolution of the systems — Node.js APIs on Vercel, Firebase Functions, Supabase/Postgres with Prisma and Cloudflare.',
+        pt: 'Responsabilidade técnica e de produto: respondo pela arquitetura, integrações e evolução dos sistemas — APIs em Node.js na Vercel, Firebase Functions, Supabase/Postgres com Prisma e Cloudflare.',
       },
       {
         en: 'Product and business: beyond code, handle admin and accounting — full ownership from ideation to product evolution.',

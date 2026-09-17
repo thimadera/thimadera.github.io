@@ -14,12 +14,13 @@ export const PROJECTS: Project[] = [
     name: 'Sidra',
     slug: 'sidra',
     description: {
-      en: 'Shipping automation for e-commerce ERPs: invoiced orders sync automatically, shipping labels are generated as soon as the invoice is authorized and picking lists come ready to print. Multi-tenant SaaS that replaced a legacy Olist-dependent stack.',
-      pt: 'Automação de expedição para ERPs de e-commerce: pedidos faturados sincronizam sozinhos, etiquetas são geradas assim que a nota é autorizada e separações saem prontas para impressão. SaaS multi-tenant que substituiu uma stack legada dependente do Olist.',
+      en: 'Shipping automation for e-commerce ERPs: invoiced orders sync automatically, shipping labels are generated as soon as the invoice is authorized and picking lists come ready to print. Multi-tenant SaaS processing 200+ orders a day, automating steps that used to require manual work in Olist.',
+      pt: 'Automação de expedição para ERPs de e-commerce: pedidos faturados sincronizam sozinhos, etiquetas são geradas assim que a nota é autorizada e separações saem prontas para impressão. SaaS multi-tenant que processa 200+ pedidos por dia, automatizando etapas que antes dependiam de operações manuais no Olist.',
     },
     year: 2026,
     tags: ['Vite', 'React', 'TypeScript', 'Supabase', 'Prisma', 'Edge Functions'],
     links: [{ label: { en: 'Live app', pt: 'App ao vivo' }, url: 'https://sidra-three.vercel.app/' }],
+    featured: true,
   },
   {
     name: 'Oessi',
