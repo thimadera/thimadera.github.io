@@ -14,7 +14,7 @@ export function Section({ id, eyebrow, title, subtitle, children }: SectionProps
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id={id} className="scroll-mt-20 py-24">
+    <section id={id} className="scroll-mt-20 pb-24">
       <div className="container-portfolio">
         <motion.div
           initial={reduceMotion ? undefined : { opacity: 0, y: 24 }}

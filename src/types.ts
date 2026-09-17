@@ -45,12 +45,8 @@ export interface Project {
   slug: string;
   /** Internal system: rendered with a badge instead of a public link. */
   internal?: boolean;
-  /** Highlighted project: rendered spanning more columns in the grid. */
-  featured?: boolean;
   /** Creation year, shown as a badge on the card (e.g. older side projects). */
   year: number;
-  /** Hidden behind the "show more" toggle - lower-priority side projects. */
-  hidden?: boolean;
 }
 
 export interface SkillCategory {

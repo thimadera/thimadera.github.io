@@ -3,9 +3,7 @@ import type { Project } from '../types';
 /**
  * Ordered by relevance for a senior frontend role: Sidra first (strongest
  * scale/architecture story), then the rest of the Brasa systems grouped
- * together, then other live products, then personal projects. Hidden
- * entries are revealed via the "show more" toggle - off-stack side
- * projects (Flutter, C#) or study/experiment projects.
+ * together, then other live products, then personal/study projects last.
  *
  * Screenshots live in `src/assets/projects/<slug>/`: the first file when
  * sorted alphabetically is the card cover, and every file in the folder is
@@ -25,7 +23,6 @@ export const PROJECTS: Project[] = [
     year: 2026,
     tags: ['Vite', 'React', 'TypeScript', 'Supabase', 'Prisma', 'Edge Functions'],
     links: [{ label: { en: 'Live app', pt: 'App ao vivo' }, url: 'https://sidra-three.vercel.app/' }],
-    featured: true,
   },
   {
     name: 'Leve Brasa',
@@ -118,8 +115,6 @@ export const PROJECTS: Project[] = [
     tags: ['React', 'TypeScript', 'PWA', 'Zustand'],
     links: [{ label: { en: 'Personal project', pt: 'Projeto pessoal' }, url: 'https://jogo-do-impostor.vercel.app/' }],
   },
-  // Hidden by default, revealed via the "show more" toggle - off-stack side
-  // projects, projects no longer maintained/used, and study projects.
   {
     name: 'StardewMods',
     slug: 'stardew-mods',
@@ -130,7 +125,6 @@ export const PROJECTS: Project[] = [
     year: 2021,
     tags: ['C#', 'SMAPI', 'Game Modding'],
     links: [{ label: { en: 'Nexus Mods', pt: 'Nexus Mods' }, url: 'https://www.nexusmods.com/profile/thimadera/mods' }],
-    hidden: true,
   },
   {
     name: 'Repegê',
@@ -142,7 +136,6 @@ export const PROJECTS: Project[] = [
     year: 2026,
     tags: ['React', 'TypeScript', 'Vite'],
     links: [{ label: { en: 'Personal project (alpha)', pt: 'Projeto pessoal (alpha)' }, url: 'https://repege.vercel.app/' }],
-    hidden: true,
   },
   {
     name: 'Cauli',
@@ -154,7 +147,6 @@ export const PROJECTS: Project[] = [
     year: 2026,
     tags: ['Flutter', 'Dart', 'Firebase'],
     links: [],
-    hidden: true,
   },
   {
     name: 'Producer Dashboard',
@@ -166,7 +158,6 @@ export const PROJECTS: Project[] = [
     year: 2023,
     tags: ['Next.js', 'Firebase', 'Charts'],
     links: [{ label: { en: 'Study project', pt: 'Projeto de estudo' }, url: 'https://producer-dashboard.web.app/' }],
-    hidden: true,
   },
   {
     name: 'Sun Game',
@@ -178,6 +169,5 @@ export const PROJECTS: Project[] = [
     year: 2019,
     tags: ['JavaScript', 'HTML & CSS', 'Game'],
     links: [{ label: { en: 'Study project', pt: 'Projeto de estudo' }, url: 'https://sun-game.web.app/' }],
-    hidden: true,
   },
 ];

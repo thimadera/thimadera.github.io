@@ -3,7 +3,7 @@ import { useI18n } from '../i18n/I18nContext';
 
 const SITE_URL = 'https://thimadera.github.io';
 const SITE_NAME = 'Thiago Madeira - Frontend Engineer';
-const IMAGE_URL = `${SITE_URL}/profile.jpg`;
+const IMAGE_URL = `${SITE_URL}/profile-900.jpg`;
 
 /**
  * Per-locale SEO: title, description, Open Graph and hreflang alternates.

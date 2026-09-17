@@ -54,12 +54,12 @@ const en = {
   projects_subtitle: 'A selection of products and experiments I built or led.',
   projects_empty: 'Project details coming soon.',
   projects_internal: 'Internal system',
-  projects_show_more: 'Show more projects',
-  projects_show_less: 'Show fewer projects',
   projects_view_prints: 'View screenshots',
   projects_gallery_close: 'Close gallery',
   projects_gallery_prev: 'Previous image',
   projects_gallery_next: 'Next image',
+  projects_carousel_prev: 'Scroll to previous projects',
+  projects_carousel_next: 'Scroll to next projects',
 
   // Skills
   skills_title: 'Skills',
@@ -141,12 +141,12 @@ const pt: Record<TKey, string> = {
   projects_subtitle: 'Uma seleção de produtos e experimentos que construí ou liderei.',
   projects_empty: 'Detalhes dos projetos em breve.',
   projects_internal: 'Sistema interno',
-  projects_show_more: 'Mostrar mais projetos',
-  projects_show_less: 'Mostrar menos projetos',
   projects_view_prints: 'Ver prints',
   projects_gallery_close: 'Fechar galeria',
   projects_gallery_prev: 'Imagem anterior',
   projects_gallery_next: 'Próxima imagem',
+  projects_carousel_prev: 'Rolar para projetos anteriores',
+  projects_carousel_next: 'Rolar para os próximos projetos',
 
   // Skills
   skills_title: 'Skills',

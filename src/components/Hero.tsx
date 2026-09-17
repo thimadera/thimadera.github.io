@@ -26,11 +26,27 @@ export function Hero() {
       <div className="container-portfolio relative py-28">
         <div className="grid items-center gap-12 lg:grid-cols-[1.5fr_1fr]">
           <div>
-            <motion.div {...fadeUp(0)}>
+            <motion.div {...fadeUp(0)} className="flex items-center gap-5">
               <span className="chip border-accent/30 text-accent">
                 <span className="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />
                 {t('hero_badge')}
               </span>
+
+              {/* Profile photo (mobile/tablet) */}
+              <div className="relative shrink-0 lg:hidden">
+                <div aria-hidden className="absolute -inset-2 rounded-full bg-accent/20 blur-xl" />
+                <picture>
+                  <source srcSet="./profile-900.webp" type="image/webp" />
+                  <img
+                    src="./profile-900.jpg"
+                    alt="Thiago Madeira"
+                    className="relative h-14 w-14 rounded-full border border-border object-cover"
+                    loading="eager"
+                    width={56}
+                    height={56}
+                  />
+                </picture>
+              </div>
             </motion.div>
 
             <motion.h1
@@ -91,18 +107,23 @@ export function Hero() {
               className="absolute -inset-6 rounded-full bg-accent/15 blur-3xl"
             />
             <div className="relative overflow-hidden rounded-3xl border border-border">
-              <img
-                src="./profile.jpg"
-                alt="Thiago Madeira"
-                className="aspect-square w-full object-cover transition-transform duration-700 hover:scale-105"
-                loading="eager"
-              />
+              <picture>
+                <source srcSet="./profile-900.webp" type="image/webp" />
+                <img
+                  src="./profile-900.jpg"
+                  alt="Thiago Madeira"
+                  className="aspect-square w-full object-cover transition-transform duration-700 hover:scale-105"
+                  loading="eager"
+                  width={900}
+                  height={900}
+                />
+              </picture>
               <div aria-hidden className="absolute inset-0 bg-linear-to-t from-background/40 to-transparent" />
             </div>
           </motion.div>
         </div>
 
-        <motion.div {...fadeUp(0.5)} className="mt-24 hidden justify-center md:flex">
+        <motion.div {...fadeUp(0.5)} className="mt-12 flex justify-center md:mt-24">
           <a href="#about" className="flex flex-col items-center gap-2 text-muted transition-colors hover:text-foreground" aria-label={t('hero_scroll')}>
             <span className="font-mono text-xs uppercase tracking-[0.2em]">{t('hero_scroll')}</span>
             <motion.span animate={{ y: [0, 6, 0] }} transition={{ duration: 1.6, repeat: Infinity }}>

@@ -8,7 +8,7 @@ import {
   X,
 } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import { PROJECTS } from '../data/projects';
 import { getProjectImages } from '../data/projectImages';
 import type { Project } from '../types';
@@ -172,9 +172,7 @@ function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.32) }}
-      className={`card group flex flex-col overflow-hidden transition-colors hover:border-accent/40 ${
-        project.featured ? 'md:col-span-2' : ''
-      }`}
+      className="card group flex w-75 shrink-0 flex-col overflow-hidden transition-colors hover:border-accent/40 sm:w-85"
     >
       {cover && (
         <button
@@ -187,6 +185,7 @@ function ProjectCard({
             src={cover}
             alt={project.name}
             loading="lazy"
+            draggable={false}
             className="aspect-video w-full object-cover object-top transition-transform duration-500 group-hover/cover:scale-[1.03]"
           />
           <span className="absolute inset-0 grid place-items-center bg-background/40 opacity-0 transition-opacity group-hover/cover:opacity-100">
@@ -244,18 +243,159 @@ function ProjectCard({
   );
 }
 
+const AUTO_SCROLL_SPEED = 36; // px per second
+const RESUME_DELAY = 1200; // ms of inactivity before autoplay resumes
+
+function ProjectsCarousel({
+  projects,
+  onOpenGallery,
+}: {
+  projects: Project[];
+  onOpenGallery: (project: Project, images: string[], startIndex: number) => void;
+}) {
+  const { t } = useI18n();
+  const reduceMotion = useReducedMotion();
+  const trackRef = useRef<HTMLDivElement>(null);
+  const pausedRef = useRef(false);
+  const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const dragRef = useRef<{ startX: number; startScroll: number } | null>(null);
+
+  const pause = useCallback(() => {
+    pausedRef.current = true;
+    clearTimeout(resumeTimeoutRef.current);
+  }, []);
+
+  const scheduleResume = useCallback((delay = RESUME_DELAY) => {
+    clearTimeout(resumeTimeoutRef.current);
+    resumeTimeoutRef.current = setTimeout(() => {
+      pausedRef.current = false;
+    }, delay);
+  }, []);
+
+  // Continuous autoplay, looping seamlessly through a duplicated track.
+  useEffect(() => {
+    if (reduceMotion) return;
+    let rafId: number;
+    let last = performance.now();
+
+    const step = (now: number) => {
+      const dt = now - last;
+      last = now;
+      const el = trackRef.current;
+      if (el && !pausedRef.current) {
+        el.scrollLeft += (AUTO_SCROLL_SPEED * dt) / 1000;
+        const half = el.scrollWidth / 2;
+        if (el.scrollLeft >= half) {
+          el.scrollLeft -= half;
+        }
+      }
+      rafId = requestAnimationFrame(step);
+    };
+
+    rafId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
+  }, [reduceMotion]);
+
+  // Vertical wheel over the carousel scrolls it horizontally instead of the page.
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+
+    const onWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      if (e.deltaY < 0 && el.scrollLeft <= 0) return;
+      e.preventDefault();
+      el.scrollLeft += e.deltaY;
+      pause();
+      scheduleResume();
+    };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => el.removeEventListener('wheel', onWheel);
+  }, [pause, scheduleResume]);
+
+  const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== 'mouse') return;
+    const el = trackRef.current;
+    if (!el) return;
+    dragRef.current = { startX: e.clientX, startScroll: el.scrollLeft };
+    pause();
+    el.setPointerCapture(e.pointerId);
+  };
+
+  const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    if (!el || !dragRef.current) return;
+    el.scrollLeft = dragRef.current.startScroll - (e.clientX - dragRef.current.startX);
+  };
+
+  const endDrag = () => {
+    if (!dragRef.current) return;
+    dragRef.current = null;
+    scheduleResume(800);
+  };
+
+  const scrollByCard = (direction: 1 | -1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    pause();
+    el.scrollBy({ left: direction * 340, behavior: reduceMotion ? 'auto' : 'smooth' });
+    scheduleResume();
+  };
+
+  return (
+    <div className="relative">
+      <div
+        ref={trackRef}
+        onMouseEnter={pause}
+        onMouseLeave={() => scheduleResume(300)}
+        onTouchStart={pause}
+        onTouchEnd={() => scheduleResume(1500)}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+        className="flex cursor-grab gap-6 overflow-x-auto pb-2 select-none active:cursor-grabbing [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden"
+      >
+        {[0, 1].map((copy) =>
+          projects.map((project, index) => (
+            <ProjectCard
+              key={`${copy}-${project.name}`}
+              project={project}
+              index={index}
+              onOpenGallery={onOpenGallery}
+            />
+          )),
+        )}
+      </div>
+
+      <button
+        type="button"
+        onClick={() => scrollByCard(-1)}
+        aria-label={t('projects_carousel_prev')}
+        className="absolute left-0 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-border bg-surface/90 p-2.5 text-foreground backdrop-blur transition-colors hover:border-accent/50 md:grid"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        type="button"
+        onClick={() => scrollByCard(1)}
+        aria-label={t('projects_carousel_next')}
+        className="absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-1/2 place-items-center rounded-full border border-border bg-surface/90 p-2.5 text-foreground backdrop-blur transition-colors hover:border-accent/50 md:grid"
+      >
+        <ChevronRight size={20} />
+      </button>
+    </div>
+  );
+}
+
 export function Projects() {
   const { t } = useI18n();
   const [gallery, setGallery] = useState<GalleryState | null>(null);
-  const [showAll, setShowAll] = useState(false);
 
   const openGallery = useCallback((project: Project, images: string[], startIndex: number) => {
     setGallery({ projectName: project.name, images, startIndex });
   }, []);
-
-  const visibleProjects = PROJECTS.filter((project) => !project.hidden);
-  const hiddenProjects = PROJECTS.filter((project) => project.hidden);
-  const shownProjects = showAll ? [...visibleProjects, ...hiddenProjects] : visibleProjects;
 
   return (
     <Section
@@ -264,23 +404,7 @@ export function Projects() {
       title={t('projects_title')}
       subtitle={t('projects_subtitle')}
     >
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {shownProjects.map((project, index) => (
-          <ProjectCard key={project.name} project={project} index={index} onOpenGallery={openGallery} />
-        ))}
-      </div>
-
-      {hiddenProjects.length > 0 && (
-        <div className="mt-10 flex justify-center">
-          <button
-            type="button"
-            onClick={() => setShowAll((v) => !v)}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-2.5 text-sm text-foreground transition-colors hover:border-accent/50"
-          >
-            {showAll ? t('projects_show_less') : t('projects_show_more')}
-          </button>
-        </div>
-      )}
+      <ProjectsCarousel projects={PROJECTS} onOpenGallery={openGallery} />
 
       <AnimatePresence>
         {gallery && <ProjectGallery gallery={gallery} onClose={() => setGallery(null)} />}
