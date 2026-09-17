@@ -104,8 +104,8 @@ export const PROJECTS: Project[] = [
     name: 'Producer Dashboard',
     slug: 'producer-dashboard',
     description: {
-      en: 'Dashboard for rural producers: producer management, farm statistics (count and total area) and charts by state, crop and land use. Built to study charts and json-server for a job interview, before the AI era.',
-      pt: 'Dashboard para produtores rurais: gestão de produtores, estatísticas de fazendas (quantidade e área total) e gráficos por estado, cultura e uso de solo. Feito para estudar gráficos e json-server para uma entrevista de emprego, antes da era da IA.',
+      en: 'Dashboard for rural producers: producer management, farm statistics (count and total area) and charts by state, crop and land use. Built to study charts and json-server for a job interview.',
+      pt: 'Dashboard para produtores rurais: gestão de produtores, estatísticas de fazendas (quantidade e área total) e gráficos por estado, cultura e uso de solo. Feito para estudar gráficos e json-server para uma entrevista de emprego.',
     },
     year: 2023,
     tags: ['Next.js', 'Firebase', 'Charts'],
@@ -115,8 +115,8 @@ export const PROJECTS: Project[] = [
     name: 'Sun Game',
     slug: 'sun-game',
     description: {
-      en: 'Educational sun game: catch sun-related items (sun, sunscreen, umbrella) and avoid the flame while the game speeds up with every catch. Built for a college health presentation, long before the AI era.',
-      pt: 'Jogo educativo sobre o sol: pegue itens relacionados ao sol (sol, protetor solar, guarda-sol) e desvie da chama - o jogo acelera a cada acerto. Feito para uma apresentação de saúde na faculdade, bem antes da era da IA.',
+      en: 'Educational sun game: catch sun-related items (sun, sunscreen, umbrella) and avoid the flame while the game speeds up with every catch. Built for a college health presentation.',
+      pt: 'Jogo educativo sobre o sol: pegue itens relacionados ao sol (sol, protetor solar, guarda-sol) e desvie da chama - o jogo acelera a cada acerto. Feito para uma apresentação de saúde na faculdade.',
     },
     year: 2019,
     tags: ['JavaScript', 'HTML & CSS', 'Game'],
