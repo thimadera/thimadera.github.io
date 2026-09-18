@@ -8,7 +8,14 @@ import {
   X,
 } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
-import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent as ReactMouseEvent,
+  type PointerEvent as ReactPointerEvent,
+} from 'react';
 import { PROJECTS } from '../data/projects';
 import { getProjectImages } from '../data/projectImages';
 import type { Project } from '../types';
@@ -245,6 +252,7 @@ function ProjectCard({
 
 const AUTO_SCROLL_SPEED = 36; // px per second
 const RESUME_DELAY = 1200; // ms of inactivity before autoplay resumes
+const DRAG_THRESHOLD = 5; // px of mouse movement before a press becomes a drag
 
 function ProjectsCarousel({
   projects,
@@ -258,7 +266,8 @@ function ProjectsCarousel({
   const trackRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(false);
   const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-  const dragRef = useRef<{ startX: number; startScroll: number } | null>(null);
+  const dragRef = useRef<{ startX: number; startScroll: number; moved: boolean } | null>(null);
+  const justDraggedRef = useRef(false);
 
   const pause = useCallback(() => {
     pausedRef.current = true;
@@ -315,24 +324,43 @@ function ProjectsCarousel({
   }, [pause, scheduleResume]);
 
   const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
-    if (e.pointerType !== 'mouse') return;
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
     const el = trackRef.current;
     if (!el) return;
-    dragRef.current = { startX: e.clientX, startScroll: el.scrollLeft };
+    dragRef.current = { startX: e.clientX, startScroll: el.scrollLeft, moved: false };
     pause();
-    el.setPointerCapture(e.pointerId);
   };
 
   const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
     const el = trackRef.current;
-    if (!el || !dragRef.current) return;
-    el.scrollLeft = dragRef.current.startScroll - (e.clientX - dragRef.current.startX);
+    const drag = dragRef.current;
+    if (!el || !drag) return;
+    if (e.buttons === 0) {
+      endDrag();
+      return;
+    }
+    const dx = e.clientX - drag.startX;
+    if (!drag.moved) {
+      if (Math.abs(dx) < DRAG_THRESHOLD) return;
+      drag.moved = true;
+      el.setPointerCapture(e.pointerId);
+    }
+    el.scrollLeft = drag.startScroll - dx;
   };
 
   const endDrag = () => {
     if (!dragRef.current) return;
+    justDraggedRef.current = dragRef.current.moved;
     dragRef.current = null;
     scheduleResume(800);
+  };
+
+  // A real drag must not also trigger the click on the card underneath.
+  const onClickCapture = (e: ReactMouseEvent<HTMLDivElement>) => {
+    if (!justDraggedRef.current) return;
+    justDraggedRef.current = false;
+    e.preventDefault();
+    e.stopPropagation();
   };
 
   const scrollByCard = (direction: 1 | -1) => {
@@ -354,7 +382,8 @@ function ProjectsCarousel({
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}
-        onPointerLeave={endDrag}
+        onPointerCancel={endDrag}
+        onClickCapture={onClickCapture}
         className="flex cursor-grab gap-6 overflow-x-auto pb-2 select-none active:cursor-grabbing [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden"
       >
         {[0, 1].map((copy) =>
