@@ -15,3 +15,4 @@
 - Data (dates, company names) must stay consistent with the LinkedIn profile - recruiters cross-check.
 - The resume PDF is generated client-side (button in Contact) from the same data files as the site (`src/data/experience.ts`, `src/data/skills.ts`, `src/data/contact.ts`) via `@react-pdf/renderer` (see `src/resume/ResumeDocument.tsx`). There are no static PDFs in `public/` - do not add any; edit the data files instead.
 - Deployment: GitHub Actions workflow in `.github/workflows/deploy.yml` (Pages source must be set to "GitHub Actions" in repo settings).
+- `posts/` holds standalone HTML cards for LinkedIn posts (e.g. `posts/react-use-hook.html`). They use the site's palette/fonts, fixed 1:1 (1080×1080) layout, and an Export JPEG button (html-to-image CDN). For a new post, copy an existing file and edit the content — not part of the Vite build.
