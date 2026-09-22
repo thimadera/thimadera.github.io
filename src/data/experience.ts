@@ -36,8 +36,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
     current: true,
     badge: { en: 'Client engagement', pt: 'Alocação' },
     summary: {
-      en: 'Worked on the customer portal of a US energy company, made of 20+ Angular microfrontends, usually as the only frontend developer on each project and today in a team of three.',
-      pt: 'Atuação no portal do cliente de uma empresa de energia dos EUA, formado por mais de 20 microfrontends em Angular, normalmente como único desenvolvedor frontend em cada projeto e hoje em um time de três.',
+      en: 'Owned frontend delivery on the customer portal of a US energy company, made of 20+ Angular microfrontends - usually the only frontend developer on each project, today in a team of three.',
+      pt: 'Responsável pelo frontend do portal do cliente de uma empresa de energia dos EUA, formado por mais de 20 microfrontends em Angular - normalmente o único desenvolvedor frontend em cada projeto, hoje em um time de três.',
     },
     highlights: [
       {
@@ -53,8 +53,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
           en: 'Angular 12 → 16 migration and single-spa (20+ microfrontends)',
           pt: 'Migração de Angular 12 para 16 e single-spa (20+ microfrontends)',
         },
-        en: 'Migrated the applications I had worked on and then the new ones, as the portal moved from a deprecated in-house library to single-spa: from one Angular project hosting all the others to a shell that mounts each microfrontend dynamically by route, independent and free to run its own framework and version.',
-        pt: 'Migrei as aplicações em que já trabalhava e depois as novas, enquanto o portal saía de uma biblioteca interna descontinuada para o single-spa: de um projeto Angular que hospedava todos os outros para um shell que monta cada microfrontend dinamicamente pela rota, de forma independente e com liberdade para usar seu próprio framework e versão.',
+        en: "Migrated the portal's applications from a deprecated in-house library to single-spa: from one Angular project hosting all the others to a shell that mounts each microfrontend by route, independent in framework and version.",
+        pt: 'Migrei as aplicações do portal de uma biblioteca interna descontinuada para o single-spa: de um projeto Angular que hospedava todos os outros para um shell que monta cada microfrontend pela rota, independente em framework e versão.',
       },
       {
         label: {
@@ -155,8 +155,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
           en: 'Sidra (React, Node.js, PostgreSQL, Prisma)',
           pt: 'Sidra (React, Node.js, PostgreSQL, Prisma)',
         },
-        en: 'Built a multi-tenant SaaS that centralizes and automates order fulfillment for e-commerce: label printing, picking control and item identification, previously done separately in each e-commerce platform. One click prints everything, turning hours of work into under 5 minutes. It handles 200+ orders a day across multiple companies.',
-        pt: 'Criei um SaaS multi-tenant que centraliza e automatiza a expedição de pedidos de e-commerce: impressão de etiquetas, controle de separação e identificação dos itens, antes feitas separadamente em cada plataforma. Um clique imprime tudo, transformando horas de trabalho em menos de 5 minutos. O sistema processa mais de 200 pedidos por dia em várias empresas.',
+        en: 'Built a multi-tenant SaaS that centralizes and automates order fulfillment for e-commerce: label printing, picking control and item identification, previously done separately in each e-commerce platform. One click prints everything, turning hours of work into under 5 minutes. It averages 200+ orders a day across multiple companies, with proven peaks of 800+ in a single day.',
+        pt: 'Criei um SaaS multi-tenant que centraliza e automatiza a expedição de pedidos de e-commerce: impressão de etiquetas, controle de separação e identificação dos itens, antes feitas separadamente em cada plataforma. Um clique imprime tudo, transformando horas de trabalho em menos de 5 minutos. O sistema processa em média mais de 200 pedidos por dia em várias empresas, com picos comprovados de mais de 800 em um único dia.',
       },
       {
         label: {
@@ -179,8 +179,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
           en: 'Order processing (webhooks, queue, PostgreSQL RLS)',
           pt: 'Processamento de pedidos (webhooks, fila, RLS no PostgreSQL)',
         },
-        en: "Built order processing around a queue: Olist webhooks are processed by a per-minute cron with retries and locking against duplicate processing, tuned with real production data against Olist's rate limit. Isolated each company's data with row-level security and layered validations, and diagnosed, fixed and documented incidents such as database timeouts under webhook bursts.",
-        pt: 'Construí o processamento de pedidos em torno de uma fila: os webhooks da Olist são processados por um cron a cada minuto, com novas tentativas e trava contra duplicidade, ajustado com dados reais de produção para respeitar o limite de requisições da Olist. Isolei os dados de cada empresa com row-level security e validações em camadas, e diagnostiquei, corrigi e documentei incidentes como timeouts do banco em rajadas de webhook.',
+        en: "Built order processing around a queue: per-minute cron with retries and locking against duplicate processing, tuned with real production data against Olist's rate limit. Isolated each company's data with row-level security, and diagnosed and documented incidents such as database timeouts under webhook bursts.",
+        pt: 'Construí o processamento de pedidos em torno de uma fila: cron a cada minuto com novas tentativas e trava contra duplicidade, ajustado com dados reais de produção para respeitar o limite da Olist. Isolei os dados de cada empresa com row-level security, e diagnostiquei e documentei incidentes como timeouts do banco em rajadas de webhook.',
       },
       {
         label: {
@@ -225,8 +225,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
     nested: true,
     roleAsTitle: true,
     summary: {
-      en: 'Worked on the tooling of the sales operation: a mobile sales app for a new consigned-loan product, its recruiting flow and the commission system.',
-      pt: 'Atuação nas ferramentas da operação de vendas: um app mobile para vender um novo produto de crédito consignado, seu fluxo de recrutamento e o sistema de comissões.',
+      en: 'Worked on the tooling of the sales operation: a mobile sales app for a new consigned-loan product, its recruiting flow and the commission system. The app shipped its MVP in about 8 months and grew to 40+ daily users.',
+      pt: 'Atuação nas ferramentas da operação de vendas: um app mobile para vender um novo produto de crédito consignado, seu fluxo de recrutamento e o sistema de comissões. O MVP do app saiu em cerca de 8 meses e chegou a mais de 40 usuários por dia.',
     },
     highlights: [
       {
@@ -273,8 +273,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
     nested: true,
     roleAsTitle: true,
     summary: {
-      en: "Worked on the company's WhatsApp customer service chatbot, from conversation flows to the APIs connecting it to internal data.",
-      pt: 'Atuação no chatbot de atendimento da empresa no WhatsApp, dos fluxos de conversa às APIs que o conectavam aos dados internos.',
+      en: "Worked on the company's WhatsApp customer service chatbot, from conversation flows to the APIs connecting it to internal data - lifting self-service resolution from about 20% to about 80%.",
+      pt: 'Atuação no chatbot de atendimento da empresa no WhatsApp, dos fluxos de conversa às APIs que o conectavam aos dados internos - elevando a resolução sem atendente de cerca de 20% para cerca de 80%.',
     },
     highlights: [
       {

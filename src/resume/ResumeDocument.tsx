@@ -177,7 +177,8 @@ export function ResumeDocument({ locale }: { locale: Locale }) {
         {/* Skills */}
         <View style={styles.rule} />
         <Text style={styles.sectionTitle}>{t.skills_title}</Text>
-        {SKILLS.map((category) => (
+        {/* Languages is skipped on the resume: the header meta line already shows them. */}
+        {SKILLS.filter((category) => category.title.en !== 'Languages').map((category) => (
           <View key={category.title.en} style={styles.skillRow}>
             <Text style={[styles.skillTitle, { width: skillTitleWidth }]}>{L(category.title)}</Text>
             <Text style={styles.skillText}>

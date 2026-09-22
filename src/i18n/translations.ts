@@ -97,7 +97,7 @@ const en = {
   resume_summary: 'Summary',
   // Impersonal wording (no pronouns), as is standard in a resume; the site keeps the first-person hero_bio.
   resume_bio:
-    '7+ years building enterprise and product software with Angular, React and Node.js. Works closely with product and design, turning business ideas into technical scope, laying out the trade-offs, finding the middle ground and building to scale. Currently at Avangrid through NTT DATA.',
+    'Senior software engineer with 7+ years across Angular, React and Node.js - from a US customer portal of 20+ microfrontends to sole technical ownership of a multi-tenant SaaS running 200+ orders a day (800+ at peak). Works closely with product and design, turning business ideas into technical scope. Currently at Avangrid through NTT DATA.',
 
   // Footer
   footer_rights: 'All rights reserved.',
@@ -198,7 +198,7 @@ const pt: Record<TKey, string> = {
   // Resume PDF
   resume_summary: 'Resumo',
   resume_bio:
-    'Mais de 7 anos construindo software corporativo e produtos digitais com Angular, React e Node.js. Atuação próxima a produto e design, transformando ideias de negócio em escopo técnico, deixando claros os trade-offs, encontrando o meio-termo e construindo pensando em escala. Hoje na Avangrid pela NTT DATA.',
+    'Engenheiro de software sênior com mais de 7 anos em Angular, React e Node.js - de um portal de cliente dos EUA com mais de 20 microfrontends à responsabilidade técnica completa por um SaaS multi-tenant que processa mais de 200 pedidos por dia (mais de 800 em picos). Atuação próxima a produto e design, transformando ideias de negócio em escopo técnico. Hoje na Avangrid pela NTT DATA.',
 
   // Footer
   footer_rights: 'Todos os direitos reservados.',

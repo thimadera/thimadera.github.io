@@ -15,6 +15,8 @@ export const SKILLS: SkillCategory[] = [
       'TypeScript',
       'Microfrontends (single-spa)',
       'RxJS',
+      'TanStack Query',
+      'Zustand',
       'PWAs',
       { en: 'Performance optimization', pt: 'Otimização de performance' },
     ],
