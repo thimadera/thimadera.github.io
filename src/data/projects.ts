@@ -21,11 +21,11 @@ export const PROJECTS: Project[] = [
     name: 'Sidra',
     slug: 'sidra',
     description: {
-      en: 'Shipping automation for e-commerce ERPs: invoiced orders sync automatically, shipping labels are generated as soon as the invoice is authorized and picking lists come ready to print. I started rewriting the ERP from scratch, then switched to a modular migration - lower risk than a full rewrite - and Sidra is that evolution today. Multi-tenant SaaS processing 200+ orders a day on average, automating steps that used to require manual work in Olist. It also includes an artwork module integrated with picking.',
-      pt: 'Automação de expedição para ERPs de e-commerce: pedidos faturados sincronizam sozinhos, etiquetas são geradas assim que a nota é autorizada e separações saem prontas para impressão. Comecei reescrevendo o ERP do zero, mas mudei para uma migração modular - menos risco que uma reescrita completa - e o Sidra é essa evolução hoje. SaaS multi-tenant que processa em média 200+ pedidos por dia, automatizando etapas que antes dependiam de trabalho manual na Olist. Inclui também um módulo de artes integrado à separação.',
+      en: 'Shipping automation for e-commerce ERPs: invoiced orders sync automatically, shipping labels are generated as soon as the invoice is authorized and picking lists come ready to print. I started rewriting the ERP from scratch, then switched to a modular migration - lower risk than a full rewrite - and Sidra is that evolution today. Multi-tenant SaaS processing 200+ orders a day on average, automating steps that used to require manual work in Olist. It also includes an artwork module integrated with picking. Error tracking runs on a custom, minimal Sentry client (raw envelope API, no SDK).',
+      pt: 'Automação de expedição para ERPs de e-commerce: pedidos faturados sincronizam sozinhos, etiquetas são geradas assim que a nota é autorizada e separações saem prontas para impressão. Comecei reescrevendo o ERP do zero, mas mudei para uma migração modular - menos risco que uma reescrita completa - e o Sidra é essa evolução hoje. SaaS multi-tenant que processa em média 200+ pedidos por dia, automatizando etapas que antes dependiam de trabalho manual na Olist. Inclui também um módulo de artes integrado à separação. O error tracking roda em um cliente Sentry próprio e mínimo (API de envelope, sem SDK).',
     },
     year: 2026,
-    tags: ['React', 'Vite', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'RLS'],
+    tags: ['React', 'Vite', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'RLS', 'Sentry'],
     links: [{ label: { en: 'Live app', pt: 'App no ar' }, url: 'https://sidra-three.vercel.app/' }],
   },
   {

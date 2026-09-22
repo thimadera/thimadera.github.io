@@ -48,6 +48,14 @@ export const SKILLS: SkillCategory[] = [
     ],
   },
   {
+    title: { en: 'Observability', pt: 'Observabilidade' },
+    skills: [
+      'Sentry',
+      { en: 'Structured logging', pt: 'Logs estruturados' },
+      { en: 'Retries, error filtering and deduplication', pt: 'Retries, filtro e deduplicação de erros' },
+    ],
+  },
+  {
     title: { en: 'APIs and integrations', pt: 'APIs e integrações' },
     skills: [
       'Node.js',

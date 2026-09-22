@@ -184,6 +184,14 @@ export const EXPERIENCE: ExperienceEntry[] = [
       },
       {
         label: {
+          en: 'Observability (custom Sentry client)',
+          pt: 'Observabilidade (cliente Sentry próprio)',
+        },
+        en: 'Built a minimal Sentry client for the Vercel functions, speaking the envelope API directly instead of the ~9 MB SDK that inflated every function and deploy. It filters a whitelist of expected errors, deduplicates reports, redacts PII and attaches per-request context and fingerprints, so each failure lands as a single contextualized issue. Automated processes also leave an operational trail in structured JSON logs.',
+        pt: 'Criei um cliente Sentry mínimo para as functions da Vercel, falando a API de envelope diretamente em vez do SDK de ~9 MB que inflava cada função e o deploy. Ele filtra uma whitelist de erros esperados, deduplica reports, mascara PII e anexa contexto por requisição e fingerprints, de modo que cada falha chega como uma issue única e contextualizada. Os processos automáticos também deixam rastro operacional em logs JSON estruturados.',
+      },
+      {
+        label: {
           en: 'Integrations (Olist, Shopify, Shopee, TikTok Shop)',
           pt: 'Integrações (Olist, Shopify, Shopee, TikTok Shop)',
         },
