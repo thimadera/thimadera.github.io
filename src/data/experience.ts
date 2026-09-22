@@ -4,145 +4,295 @@ import type { ExperienceEntry } from '../types';
  * Hybrid timeline: employer entries with nested allocations, plus previous
  * experiences and education. Dates/text follow the LinkedIn profile so
  * recruiters see consistent information across sources.
+ *
+ * Writing style (keep consistent across entries):
+ * - Every bullet has a bold label "Concept (stack)".
+ * - The body starts with a past-tense action verb; result comes last.
+ * - One idea per bullet, up to three short sentences.
+ * - Avoid pronouns unless they carry meaning; no leadership claims.
+ * - Numbers: "20+" in labels, "mais de 20" in Portuguese prose.
+ * - Role titles are translated in PT ("Engenheiro de Software ...").
  */
 export const EXPERIENCE: ExperienceEntry[] = [
   {
     company: { en: 'NTT DATA Europe & Latam', pt: 'NTT DATA Europe & Latam' },
-    role: { en: 'Frontend Engineer', pt: 'Frontend Engineer' },
+    // No role of its own: the roles live in the nested engagements below.
+    role: { en: '', pt: '' },
     start: { month: 6, year: 2021 },
     location: { en: 'Brazil (remote, global teams)', pt: 'Brasil (remoto, times globais)' },
+    summary: {
+      en: 'Technology consultancy: engineers are allocated to client projects, so the roles below are client engagements.',
+      pt: 'Consultoria de tecnologia: as pessoas são alocadas em projetos de clientes, e os cargos abaixo são essas alocações.',
+    },
     current: true,
     highlights: [],
   },
   {
     company: { en: 'Avangrid (USA)', pt: 'Avangrid (EUA)' },
-    role: { en: 'Tech Lead | Frontend Engineer', pt: 'Líder Técnico | Frontend Engineer' },
+    role: { en: 'Senior Software Engineer', pt: 'Engenheiro de Software Sênior' },
     start: { month: 8, year: 2023 },
     location: { en: 'USA (remote)', pt: 'EUA (remoto)' },
     nested: true,
     current: true,
     badge: { en: 'Client engagement', pt: 'Alocação' },
+    summary: {
+      en: 'Worked on the customer portal of a US energy company, made of 20+ Angular microfrontends, usually as the only frontend developer on each project and today in a team of three.',
+      pt: 'Atuação no portal do cliente de uma empresa de energia dos EUA, formado por mais de 20 microfrontends em Angular, normalmente como único desenvolvedor frontend em cada projeto e hoje em um time de três.',
+    },
     highlights: [
       {
-        en: 'Modernized legacy applications and took part in the Angular 12 → 16 migration, using TypeScript, RxJS and SCSS.',
-        pt: 'Modernizei aplicações legadas e participei da migração de Angular 12 para Angular 16, utilizando TypeScript, RxJS e SCSS.',
+        label: {
+          en: 'Move in / move out rebuild (Angular)',
+          pt: 'Reconstrução do fluxo de move in / move out (Angular)',
+        },
+        en: 'Took over a project full of bugs and rebuilt almost all of it, with new components, a faster and smoother experience, a better UI and a restructured codebase, fixing slowness and misaligned components on top of the reported bugs. More users completed the flow without errors.',
+        pt: 'Assumi um projeto cheio de bugs e refiz quase tudo: componentes novos, experiência mais rápida e fluida, interface melhor e código reestruturado, corrigindo lentidão e componentes desalinhados além dos bugs reportados. Mais usuários passaram a concluir o fluxo sem erros.',
       },
       {
-        en: 'Built features for the customer portal, including power outage processes, move-in/move-out and energy usage visualization.',
-        pt: 'Desenvolvi funcionalidades para o portal do cliente, incluindo processos de interrupção de energia, move-in/move-out e visualização de consumo.',
+        label: {
+          en: 'Angular 12 → 16 migration and single-spa (20+ microfrontends)',
+          pt: 'Migração de Angular 12 para 16 e single-spa (20+ microfrontends)',
+        },
+        en: 'Migrated the applications I had worked on and then the new ones, as the portal moved from a deprecated in-house library to single-spa: from one Angular project hosting all the others to a shell that mounts each microfrontend dynamically by route, independent and free to run its own framework and version.',
+        pt: 'Migrei as aplicações em que já trabalhava e depois as novas, enquanto o portal saía de uma biblioteca interna descontinuada para o single-spa: de um projeto Angular que hospedava todos os outros para um shell que monta cada microfrontend dinamicamente pela rota, de forma independente e com liberdade para usar seu próprio framework e versão.',
       },
       {
-        en: 'Contributed to organizing the applications into a microfrontends architecture with single-spa.',
-        pt: 'Contribuí para a organização de aplicações em uma arquitetura de microfrontends com single-spa.',
+        label: {
+          en: 'Quality (Sonar, ESLint, Prettier, unit tests)',
+          pt: 'Qualidade (Sonar, ESLint, Prettier, testes unitários)',
+        },
+        en: 'Worked under strict ESLint and Sonar rules, including accessibility, with editor extensions while coding, and brought the components I created or refactored to 90%+ unit test coverage. Followed Sonar reports to fix the errors and bugs they flagged.',
+        pt: 'Trabalhei com regras rígidas de ESLint e Sonar, incluindo acessibilidade, e extensões do editor durante o desenvolvimento, e levei os componentes que criei ou refatorei a mais de 90% de cobertura de testes unitários. Acompanhei os relatórios do Sonar para corrigir os erros e bugs apontados.',
       },
       {
-        en: 'Raised test coverage from 0 to 80% (Jest/Karma), with continuous integration in Jenkins and static analysis in SonarQube.',
-        pt: 'Aumentei a cobertura de testes de 0 para 80% (Jest/Karma), com integração contínua no Jenkins e análise estática no SonarQube.',
+        label: {
+          en: 'Outage reporting and tracking (Angular)',
+          pt: 'Relato e acompanhamento de falta de energia (Angular)',
+        },
+        en: 'Started a new project on a legacy base, redone with a new design, better UI/UX and new features: customers, logged in or not, report an outage at home and follow it on a map (confirmed, crew on the way, progress to resolution). Brought the neighborhood outage map, previously a third-party service, in-house.',
+        pt: 'Iniciei um projeto novo sobre uma base legada, refeito com novo design, melhor UI/UX e novidades: clientes, logados ou não, avisam que estão sem energia em casa e acompanham em um mapa (confirmada, equipe a caminho, andamento da resolução). Internalizei o mapa de faltas de energia do bairro, antes um serviço de terceiros.',
       },
       {
-        en: 'Took part in technical decisions and architecture documentation, while mentoring two junior developers in a multicultural team (USA, India, Brazil).',
-        pt: 'Atuei em decisões técnicas e documentação de arquitetura, além de orientar dois desenvolvedores juniores em um time multicultural (EUA, Índia, Brasil).',
+        label: {
+          en: 'Energy and gas usage (Angular, NgCharts, SVG)',
+          pt: 'Consumo de energia e gás (Angular, NgCharts, SVG)',
+        },
+        en: 'Implemented in-house charts, with hand-built SVG and NgCharts, for customers to follow their energy and gas bills and compare them with previous ones, replacing a third-party service.',
+        pt: 'Implementei gráficos próprios, com SVG feito à mão e NgCharts, para o cliente acompanhar suas contas de energia e gás e compará-las com as anteriores, no lugar de um serviço de terceiros.',
+      },
+      {
+        label: {
+          en: 'Social programs form (Angular)',
+          pt: 'Formulário de programas sociais (Angular)',
+        },
+        en: 'Built from scratch a step-by-step form where customers enter their data and get the list of social programs they qualify for (such as low income), with the eligibility rules served by the backend.',
+        pt: 'Criei do zero um formulário em etapas em que o cliente informa seus dados e recebe a lista de programas sociais para os quais é elegível (como baixa renda), com as regras de elegibilidade fornecidas pelo backend.',
+      },
+      {
+        label: { en: 'Mentoring and documentation', pt: 'Mentoria e documentação' },
+        en: 'Mentored two junior developers, one after the other, on the move in / move out project. Documented the migration step by step (extensions, libraries, file templates) and guided other developers.',
+        pt: 'Orientei dois desenvolvedores juniores, um depois do outro, no projeto de move in / move out. Documentei a migração passo a passo (extensões, bibliotecas, modelos de arquivo) e orientei outros desenvolvedores.',
       },
     ],
   },
   {
     company: { en: 'Cubo Itaú', pt: 'Cubo Itaú' },
-    role: { en: 'Frontend Engineer', pt: 'Frontend Engineer' },
+    role: { en: 'Software Engineer', pt: 'Engenheiro de Software' },
     start: { month: 7, year: 2021 },
     end: { month: 7, year: 2023 },
     location: { en: 'São Paulo, Brazil', pt: 'São Paulo, Brasil' },
     nested: true,
     badge: { en: 'Client engagement', pt: 'Alocação' },
+    summary: {
+      en: 'Worked on a B2B platform where large companies and startups, partners of Cubo, discover and contact each other, hosted on AWS.',
+      pt: 'Atuação em uma plataforma B2B onde grandes empresas e startups, parceiras do Cubo, se conhecem e se contatam, hospedada na AWS.',
+    },
     highlights: [
       {
-        en: 'Took part in migrating the customer portal from Angular 8 to React with Next.js and Styled Components.',
-        pt: 'Participei da migração do portal do cliente de Angular 8 para React com Next.js e Styled Components.',
+        label: {
+          en: 'Screens and components (Angular, React, Next.js)',
+          pt: 'Telas e componentes (Angular, React, Next.js)',
+        },
+        en: 'Built new screens and components and refactored existing ones on data-heavy interfaces (forms, filters and tables). Built the components of the new design system created by the design team and applied them in the new React project.',
+        pt: 'Criei telas e componentes novos e refatorei os existentes em interfaces com muitos dados (formulários, filtros e tabelas). Criei os componentes do novo design system, elaborado pelo time de design, e os implementei no novo projeto em React.',
       },
       {
-        en: 'Set up the React project, defined component and styling patterns for the team, and implemented pages based on the new design system, using the specifications available in Figma.',
-        pt: 'Estruturei o projeto React, defini padrões de componentização e estilização para o time e implementei páginas com base no novo design system, utilizando as especificações disponibilizadas no Figma.',
+        label: {
+          en: 'Angular 8 → React migration (Next.js, Styled Components)',
+          pt: 'Migração de Angular 8 para React (Next.js, Styled Components)',
+        },
+        en: 'Worked on the migration requested to improve performance and UX and standardize services, following Next.js conventions.',
+        pt: 'Atuei na migração pedida para melhorar desempenho e UX e padronizar os serviços, seguindo as convenções do Next.js.',
       },
       {
-        en: 'Kept Angular and React running side by side until the migration was complete.',
-        pt: 'Durante a transição, mantivemos Angular e React em funcionamento até a conclusão da migração.',
+        label: { en: 'Kanban-style board (Angular)', pt: 'Board estilo kanban (Angular)' },
+        en: 'Refactored the largest and most complete screen, a Jira-like board with cards that move between columns and reorder, splitting it into components to improve performance and fix bugs.',
+        pt: 'Refatorei a maior e mais completa tela, um board no estilo Jira com cards que se movem entre colunas e se reordenam, dividindo-a em componentes para melhorar o desempenho e corrigir bugs.',
       },
       {
-        en: 'Built complex forms and data-driven interfaces, prioritizing componentization and maintainability.',
-        pt: 'Desenvolvi formulários complexos e interfaces com dados dinâmicos, priorizando componentização e manutenção do código.',
-      },
-      {
-        en: 'Mentored a junior developer in a career transition, supporting her Angular learning and her work in the React migration.',
-        pt: 'Orientei uma desenvolvedora júnior em sua transição de carreira, apoiando seu aprendizado de Angular e sua participação na migração para React.',
+        label: { en: 'Mentoring', pt: 'Mentoria' },
+        en: 'Mentored a junior developer moving into programming from another career, teaching and assigning tasks.',
+        pt: 'Orientei uma desenvolvedora júnior vinda de outra carreira, ensinando e distribuindo tarefas.',
       },
     ],
   },
   {
     company: { en: 'Brasa - Presentes & Personalizados', pt: 'Brasa - Presentes & Personalizados' },
-    role: { en: 'Co-founder & Product Engineer', pt: 'Sócio-fundador | Engenheiro de Produto' },
+    role: {
+      en: 'Senior Software Engineer (Part-time)',
+      pt: 'Engenheiro de Software Sênior (meio período)',
+    },
     start: { month: 5, year: 2024 },
     location: { en: 'Sorocaba, SP, Brazil', pt: 'Sorocaba, SP, Brasil' },
     current: true,
+    summary: {
+      en: 'Responsible for the technology of a personalized products business, from the Shopify storefront to the internal systems behind production and fulfillment.',
+      pt: 'Responsável pela tecnologia de um negócio de produtos personalizados, da loja Shopify aos sistemas internos de produção e expedição.',
+    },
     highlights: [
       {
-        en: 'Product development: built Brasa\'s digital operation from scratch — Shopify e-commerce, plus Next.js/Firebase on the production system and React 19/Vite on the HR portal.',
-        pt: 'Desenvolvimento de produtos: construí a operação digital da Brasa do zero — e-commerce em Shopify; Next.js e Firebase no sistema de produção; React 19 e Vite no portal de RH.',
+        label: {
+          en: 'Sidra (React, Node.js, PostgreSQL, Prisma)',
+          pt: 'Sidra (React, Node.js, PostgreSQL, Prisma)',
+        },
+        en: 'Built a multi-tenant SaaS that centralizes and automates order fulfillment for e-commerce: label printing, picking control and item identification, previously done separately in each e-commerce platform. One click prints everything, turning hours of work into under 5 minutes. It handles 200+ orders a day across multiple companies.',
+        pt: 'Criei um SaaS multi-tenant que centraliza e automatiza a expedição de pedidos de e-commerce: impressão de etiquetas, controle de separação e identificação dos itens, antes feitas separadamente em cada plataforma. Um clique imprime tudo, transformando horas de trabalho em menos de 5 minutos. O sistema processa mais de 200 pedidos por dia em várias empresas.',
       },
       {
-        en: 'Integrations: built integrations with Olist, Shopify, Shopee and TikTok Shop via APIs and webhooks.',
-        pt: 'Integrações: desenvolvi integrações com Olist, Shopify, Shopee e TikTok Shop por meio de APIs e webhooks.',
+        label: {
+          en: 'Artwork pipeline (Canva, 3D preview, print)',
+          pt: 'Fluxo de artes (Canva, preview 3D, impressão)',
+        },
+        en: 'Automated the artwork flow: art imported from Canva is saved in the formats each step needs (JPG for the 3D preview, PNG for printing, SVG when the customer can swap an image), managed in the admin, shown during picking and turned into a print-ready PDF that follows the exact quantities and sequence of the pick list.',
+        pt: 'Automatizei o fluxo de artes: a arte importada do Canva é salva nos formatos que cada etapa precisa (JPG para o preview 3D, PNG para impressão, SVG quando o cliente pode trocar uma imagem), gerenciada no admin, exibida durante a separação e transformada em um PDF de impressão que segue a quantidade e a ordem exatas da lista de separação.',
       },
       {
-        en: 'Technical responsibilities: architecture, integrations and evolution of the systems — Node.js APIs on Vercel, Firebase Functions, Supabase/Postgres with Prisma and Cloudflare.',
-        pt: 'Responsabilidades técnicas: arquitetura, integrações e evolução dos sistemas — APIs em Node.js na Vercel, Firebase Functions, Supabase/Postgres com Prisma e Cloudflare.',
+        label: {
+          en: 'Modular migration instead of a rewrite',
+          pt: 'Migração modular no lugar de uma reescrita',
+        },
+        en: 'Started a full ERP rewrite and switched to a modular migration: a full rewrite would deliver nothing until the MVP and leave every problem for the cutover, while modules (picking, products, inventory, logistics) move over gradually and are tested in production step by step, without disrupting operations. The existing Brasa Admin keeps running production meanwhile; inventory and product sync to marketplaces are next.',
+        pt: 'Comecei a reescrever o ERP do zero e mudei para uma migração modular: uma reescrita completa não entregaria nada até o MVP e deixaria todos os problemas para a virada, enquanto os módulos (separação, produtos, estoque, logística) migram aos poucos e são testados em produção passo a passo, sem atrapalhar a operação. Enquanto isso, o Brasa Admin atual segue rodando a produção; estoque e envio de produtos aos marketplaces são os próximos.',
       },
       {
-        en: 'Product and business: beyond the technical responsibilities, I also handle the company\'s admin and accounting.',
-        pt: 'Produto e negócio: além das responsabilidades técnicas, cuido do administrativo e da contabilidade da empresa.',
+        label: {
+          en: 'Order processing (webhooks, queue, PostgreSQL RLS)',
+          pt: 'Processamento de pedidos (webhooks, fila, RLS no PostgreSQL)',
+        },
+        en: "Built order processing around a queue: Olist webhooks are processed by a per-minute cron with retries and locking against duplicate processing, tuned with real production data against Olist's rate limit. Isolated each company's data with row-level security and layered validations, and diagnosed, fixed and documented incidents such as database timeouts under webhook bursts.",
+        pt: 'Construí o processamento de pedidos em torno de uma fila: os webhooks da Olist são processados por um cron a cada minuto, com novas tentativas e trava contra duplicidade, ajustado com dados reais de produção para respeitar o limite de requisições da Olist. Isolei os dados de cada empresa com row-level security e validações em camadas, e diagnostiquei, corrigi e documentei incidentes como timeouts do banco em rajadas de webhook.',
+      },
+      {
+        label: {
+          en: 'Integrations (Olist, Shopify, Shopee, TikTok Shop)',
+          pt: 'Integrações (Olist, Shopify, Shopee, TikTok Shop)',
+        },
+        en: 'Built the connections between the internal systems and each platform through APIs and webhooks.',
+        pt: 'Construí as conexões entre os sistemas internos e cada plataforma por meio de APIs e webhooks.',
+      },
+      {
+        label: {
+          en: 'Storefront and 3D (Shopify, Liquid, Three.js)',
+          pt: 'Loja e 3D (Shopify, Liquid, Three.js)',
+        },
+        en: "Built from scratch the 3D product viewer with real-time preview of the personalization, the store's differentiator since day one (customers see the product in 3D before buying), and a Chrome extension the internal team uses to preview how their artwork looks on the mug in real time.",
+        pt: 'Criei do zero o visualizador 3D de produtos com preview em tempo real da personalização, o diferencial da loja desde o começo (o cliente vê o produto em 3D antes de comprar), e uma extensão do Chrome que o time interno usa para ver em tempo real como a arte fica na caneca.',
       },
     ],
   },
   {
     company: { en: 'Promotora Presença', pt: 'Promotora Presença' },
-    role: { en: 'Fullstack Developer', pt: 'Desenvolvedor Fullstack' },
-    start: { month: 9, year: 2019 },
+    // No role of its own: the roles live in the nested engagements below.
+    role: { en: '', pt: '' },
+    start: { month: 3, year: 2019 },
     end: { month: 7, year: 2021 },
     location: { en: 'São Paulo, Brazil', pt: 'São Paulo, Brasil' },
+    highlights: [],
+  },
+  {
+    company: { en: 'Promotora Presença', pt: 'Promotora Presença' },
+    role: { en: 'Software Engineer', pt: 'Engenheiro de Software' },
+    start: { month: 9, year: 2019 },
+    end: { month: 7, year: 2021 },
+    nested: true,
+    roleAsTitle: true,
+    summary: {
+      en: 'Worked on the tooling of the sales operation: a mobile sales app for a new consigned-loan product, its recruiting flow and the commission system.',
+      pt: 'Atuação nas ferramentas da operação de vendas: um app mobile para vender um novo produto de crédito consignado, seu fluxo de recrutamento e o sistema de comissões.',
+    },
     highlights: [
       {
-        en: 'Call center service app: built in Angular + Ionic (PWA and Android WebView) the app that shows customer data and available products during the call — with negotiation and sale closing — enabling calls directly from the phone and modernizing the operation.',
-        pt: 'App de atendimento do call center: desenvolvi em Angular + Ionic (PWA e WebView Android) o app que, durante a ligação, mostra os dados do cliente e os produtos disponíveis — com negociação e fechamento de venda — permitindo ligações diretamente pelo celular e modernizando a operação.',
+        label: {
+          en: 'Mobile sales app (Angular, Ionic, PWA, Google Play WebView)',
+          pt: 'App mobile de vendas (Angular, Ionic, PWA, WebView na Google Play)',
+        },
+        en: 'Built the app for a new consigned-loan product so sellers anywhere in Brazil could work from home on their own phones, without the full desktop-plus-company-phone setup. As the sole frontend developer, alongside one backend and one telephony developer, delivered the MVP in about 8 months; it later served 40+ daily users.',
+        pt: 'Criei o app para um novo produto de crédito consignado, para que vendedores de qualquer lugar do Brasil trabalhassem de casa com o próprio celular, sem depender do computador e do telefone da empresa. Como único desenvolvedor frontend, ao lado de um desenvolvedor backend e um de telefonia, entreguei o MVP em cerca de 8 meses; depois ele atendeu mais de 40 usuários por dia.',
       },
       {
-        en: 'Real impact: 40+ daily users — pre-selection process, courses, charts and real-time commission all moved into the app.',
-        pt: 'Impacto real: 40+ usuários diários — o pré-processo seletivo, cursos, gráficos e comissão em tempo real passaram a ser feitos direto pelo app.',
+        label: {
+          en: 'In-call flow and loan simulation',
+          pt: 'Fluxo da ligação e simulação de empréstimo',
+        },
+        en: "Built the flow used during each call: it pulls the customer's data and the products to offer, runs simulations from suggestions or seller-entered amounts and installments (rules from an API, configured per bank and product) and records the outcome (rejected, wrong number, product sold), routing the sale to the right team for documents.",
+        pt: 'Criei o fluxo usado durante cada ligação: ele traz os dados do cliente e os produtos a oferecer, faz simulações a partir de sugestões ou de valor e parcelas informados pelo vendedor (regras vindas de uma API, configuradas por banco e produto) e registra o resultado (rejeitado, número errado, produto vendido), encaminhando a venda ao setor certo para os documentos.',
       },
       {
-        en: 'Backend and automations: built APIs in C#, worked with SQL Server and developed Node.js systems that generated Excel files with commission rules for finance to process payments.',
-        pt: 'Backend e automações: criei APIs em C#, trabalhei com SQL Server e desenvolvi sistemas em Node.js que geravam Excel com as regras de comissão para o financeiro processar os pagamentos.',
+        label: { en: 'Continuous evolution', pt: 'Evolução contínua' },
+        en: 'Observed sellers at their desks to find bottlenecks and built what superiors kept requesting: performance charts, commission forecast, ranking and a knowledge area with courses and videos.',
+        pt: 'Observei os vendedores em suas mesas para encontrar gargalos e construí o que a gestão pedia: gráficos de acompanhamento, previsão de comissão, ranking e uma área de conhecimento com cursos e vídeos.',
+      },
+      {
+        label: {
+          en: 'Recruiting pre-selection (Blip, Airtable, Calendly)',
+          pt: 'Pré-seleção de candidatos (Blip, Airtable, Calendly)',
+        },
+        en: 'Built the recruiting screening, launched with the app as a chat flow (WhatsApp and Messenger, on Blip) that disqualified candidates and sent answers to HR in Airtable, and later moved it inside the app with a better UX and Calendly booking for the HR interview.',
+        pt: 'Criei a triagem de recrutamento, lançada junto com o app como um fluxo de chat (WhatsApp e Messenger, na Blip) que desclassificava candidatos e enviava as respostas ao RH no Airtable, e depois a levei para dentro do app, com UX melhor e agendamento da conversa com o RH pelo Calendly.',
+      },
+      {
+        label: { en: 'Commission system (Node.js, Angular)', pt: 'Sistema de comissões (Node.js, Angular)' },
+        en: 'Built the commission system for finance: weekly or monthly payouts calculated per seller, with product-specific commissions, goals and bonuses, replacing a fully manual process with a single button and no human errors.',
+        pt: 'Desenvolvi o sistema de comissões do financeiro: pagamento semanal ou mensal calculado por vendedor, com comissões específicas por produto, metas e bônus, no lugar de um processo totalmente manual, agora com um clique e sem erros humanos.',
       },
     ],
   },
   {
     company: { en: 'Promotora Presença', pt: 'Promotora Presença' },
-    role: {
-      en: 'Computer Engineering Intern',
-      pt: 'Estagiário de Engenharia de Computação',
-    },
+    role: { en: 'Junior Software Engineer', pt: 'Engenheiro de Software Júnior' },
     start: { month: 3, year: 2019 },
     end: { month: 9, year: 2019 },
-    location: { en: 'São Paulo, Brazil', pt: 'São Paulo, Brasil' },
+    nested: true,
+    roleAsTitle: true,
+    summary: {
+      en: "Worked on the company's WhatsApp customer service chatbot, from conversation flows to the APIs connecting it to internal data.",
+      pt: 'Atuação no chatbot de atendimento da empresa no WhatsApp, dos fluxos de conversa às APIs que o conectavam aos dados internos.',
+    },
     highlights: [
       {
-        en: 'Chatbot: trained the company\'s chatbot (Blip) and built functions to clean and validate name and CPF inside messages.',
-        pt: 'Chatbot: treinei o chatbot da empresa (Blip) e criei funções para limpar e validar nome e CPF dentro das mensagens.',
+        label: { en: 'Chatbot APIs (C#, SQL Server)', pt: 'APIs do chatbot (C#, SQL Server)' },
+        en: 'Learned and built the APIs connecting the chatbot to the customer database: after identifying a customer by CPF, the bot showed real data on their product, raising the share of questions resolved without an agent from about 20% to about 80%.',
+        pt: 'Aprendi e criei as APIs que conectavam o chatbot ao banco de clientes: depois de identificar o cliente pelo CPF, o bot mostrava dados reais do produto, elevando de cerca de 20% para cerca de 80% a parcela de dúvidas resolvidas sem atendente.',
       },
       {
-        en: 'APIs and Airtable: built C# APIs integrated with Airtable, giving admin and finance real-time data.',
-        pt: 'APIs e Airtable: criei APIs em C# integradas ao Airtable, dando ao administrativo e ao financeiro dados em tempo real.',
+        label: { en: 'Agent handoff', pt: 'Repasse ao atendente' },
+        en: "Passed each conversation to agents with the customer, product, and question already filled in, replacing a manual step that took 10 minutes or more, counting the customer's wait.",
+        pt: 'Repassei cada conversa ao atendente com cliente, produto e dúvida já preenchidos, no lugar de uma etapa manual que levava 10 minutos ou mais, contando a espera do cliente.',
       },
       {
-        en: 'Exploration and focus: tried several stacks (C#, Node.js, SQL Server, Angular, Ionic, Flutter, Firebase) and defined frontend as my career focus.',
-        pt: 'Exploração e foco: passei por várias stacks (C#, Node.js, SQL Server, Angular, Ionic, Flutter, Firebase) — foi onde defini o frontend como foco da carreira.',
+        label: { en: 'Chatbot flows (Blip, JavaScript)', pt: 'Fluxos do chatbot (Blip, JavaScript)' },
+        en: 'Built and extended the WhatsApp chatbot flows, with JavaScript running inside Blip (intent-based and manually trained, before LLMs), answering common product questions for 10–20 customers a day at the start, a volume that kept growing.',
+        pt: 'Criei e evoluí os fluxos do chatbot no WhatsApp, com JavaScript rodando dentro da Blip (baseado em intenção e treinado manualmente, antes dos LLMs), respondendo dúvidas comuns sobre o produto de 10 a 20 clientes por dia no início, volume que só cresceu.',
+      },
+      {
+        label: { en: 'Customer identification', pt: 'Identificação do cliente' },
+        en: 'Built from scratch: CPF normalization for any input format and name confirmation ("Are you XXX?"), with a blocklist for improper names.',
+        pt: 'Construí do zero a normalização do CPF em qualquer formato e confirmação do nome ("Você é XXX?"), com lista de bloqueio para nomes impróprios.',
+      },
+      {
+        label: { en: 'Usage metrics (Airtable)', pt: 'Métricas de uso (Airtable)' },
+        en: 'Sent key chatbot data (customer name, last step reached) to Airtable through an API, giving management real-time metrics on how many customers reached the bot and where they dropped off, and used them to fix wrong CPFs and unclear questions through better CPF cleaning and intent recognition.',
+        pt: 'Enviei dados-chave do chatbot (nome do cliente, última etapa alcançada) ao Airtable por API, dando à gestão métricas em tempo real de quantos clientes chegavam ao bot e onde desistiam, e usei isso para corrigir CPFs errados e perguntas mal formuladas, com melhor limpeza de CPF e reconhecimento de intenção.',
       },
     ],
   },
@@ -151,25 +301,32 @@ export const EXPERIENCE: ExperienceEntry[] = [
       en: 'UNASP/SP - Adventist University Center of São Paulo',
       pt: 'UNASP/SP - Centro Universitário Adventista de São Paulo',
     },
-    role: {
-      en: 'Administrative Assistant - Graduate Studies, Research & Extension',
-      pt: 'Auxiliar de Secretaria de Pós-Graduação, Pesquisa e Extensão',
-    },
+    role: { en: 'Administrative Assistant', pt: 'Assistente Administrativo' },
     start: { month: 2, year: 2017 },
     end: { month: 12, year: 2018 },
     location: { en: 'São Paulo, Brazil', pt: 'São Paulo, Brasil' },
+    summary: {
+      en: 'Supported course operations, lectures, and academic events at a university, from registration to certificates.',
+      pt: 'Apoio à operação de cursos, palestras e eventos acadêmicos em uma universidade, da inscrição aos certificados.',
+    },
     highlights: [
       {
-        en: 'Excel automation (VBA): built macros with VBA and complex formulas — including batch email sends of course certificates — cutting a full day of work down to under an hour.',
-        pt: 'Automação em Excel (VBA): criei macros com VBA e fórmulas complexas — incluindo envio em lote de e-mails com certificados de cursos — reduzindo um dia inteiro de trabalho para menos de uma hora.',
+        label: {
+          en: 'Certificate automation (Excel VBA, Word, Outlook)',
+          pt: 'Automação de certificados (Excel VBA, Word, Outlook)',
+        },
+        en: 'Built an automation, on my own initiative, that turned a spreadsheet of names and emails into PDF certificates from a Word template and sent them through Outlook. Cut each round (courses of 50 to 200 participants, about every 3 months) from 2–3 days of manual copy-and-paste to about 10 minutes, with no delivery errors.',
+        pt: 'Criei, por iniciativa própria, uma automação que transformava uma planilha de nomes e e-mails em certificados em PDF, a partir de um modelo em Word, e os enviava pelo Outlook. Reduzi cada rodada (cursos de 50 a 200 participantes, a cada cerca de 3 meses) de 2 a 3 dias de copiar e colar manual para cerca de 10 minutos, sem erros de envio.',
       },
       {
-        en: 'Operations and support: phone, email and in-person service; calls to recover abandoned checkouts; organized academic events (special classes, lectures).',
-        pt: 'Operação e atendimento: atendimento por telefone, e-mail e presencial; ligações para recuperar checkouts abandonados; organização de eventos acadêmicos (aulas especiais, palestras).',
+        label: { en: 'Personalized emails', pt: 'E-mails personalizados' },
+        en: "Extended the same base to send emails with each participant's and course's name, and taught colleagues in the same and other departments to use it.",
+        pt: 'Estendi a mesma base para enviar e-mails com o nome de cada participante e do curso, e ensinei colegas do mesmo setor e de outros a usá-la.',
       },
       {
-        en: 'First steps in programming: during the Computer Engineering degree, built projects in C in programming classes.',
-        pt: 'Primeiros passos em programação: durante a graduação em Engenharia de Computação, desenvolvia projetos em C nas aulas de programação.',
+        label: { en: 'QR code attendance', pt: 'Presença por QR code' },
+        en: 'Proposed a platform the team adopted, replacing paper sign-in and manual check-in/check-out cross-checks and feeding the spreadsheet used to issue certificates.',
+        pt: 'Propus uma plataforma adotada pela equipe, no lugar da lista em papel e da conferência manual de entrada e saída, alimentando a planilha usada para emitir os certificados.',
       },
     ],
   },

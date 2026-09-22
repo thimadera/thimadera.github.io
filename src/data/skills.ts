@@ -1,29 +1,90 @@
 import type { SkillCategory } from '../types';
 
 /**
- * Backend/integration entries here (Node.js, Firebase, Supabase, Cloudflare)
- * reflect current usage at Brasa, not just historical context.
+ * Concept-first: each group is a concept, and the tools sit next to it as
+ * detail. Plain strings render as-is in both locales (tool names); use a
+ * localized entry when the concept itself needs translation.
  */
 export const SKILLS: SkillCategory[] = [
   {
-    title: { en: 'Frontend', pt: 'Frontend' },
-    skills: ['Angular', 'React', 'Next.js', 'Vite', 'TypeScript', 'HTML & CSS'],
+    title: { en: 'Frontend architecture', pt: 'Arquitetura frontend' },
+    skills: [
+      'Angular',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Microfrontends (single-spa)',
+      'RxJS',
+      'PWAs',
+      { en: 'Performance optimization', pt: 'Otimização de performance' },
+    ],
   },
   {
-    title: { en: 'UI & Design', pt: 'UI e Design' },
-    skills: ['Tailwind CSS', 'Design Systems', 'Accessibility (WCAG)'],
+    title: { en: 'UI and accessibility', pt: 'UI e acessibilidade' },
+    skills: [
+      'Design systems',
+      { en: 'Accessibility', pt: 'Acessibilidade' },
+      'Styled Components',
+      'Tailwind CSS',
+      'SCSS',
+      'Figma',
+    ],
   },
   {
-    title: { en: 'Backend & Integrations', pt: 'Backend e Integrações' },
-    skills: ['Node.js', 'Firebase', 'Supabase', 'Cloudflare'],
+    title: { en: 'Testing and code quality', pt: 'Testes e qualidade de código' },
+    skills: [
+      { en: 'Unit tests (Jest, Karma, Vitest)', pt: 'Testes unitários (Jest, Karma, Vitest)' },
+      { en: 'E2E tests (Playwright)', pt: 'Testes E2E (Playwright, projetos próprios)' },
+      { en: 'Static analysis (Sonar, ESLint, Prettier)', pt: 'Análise estática (Sonar, ESLint, Prettier)' },
+    ],
   },
   {
-    title: { en: 'Engineering', pt: 'Engenharia' },
-    skills: ['Unit Testing', 'CI/CD (Jenkins, SonarQube)', 'Git', 'Developer Experience'],
+    title: { en: 'CI/CD and delivery', pt: 'CI/CD e entrega' },
+    skills: [
+      'CI/CD (GitHub Actions)',
+      'Git',
+      { en: 'Docker (local environments)', pt: 'Docker (ambientes locais)' },
+      'Vercel',
+    ],
   },
   {
-    title: { en: 'Leadership', pt: 'Liderança' },
-    skills: ['Technical Leadership', 'Mentoring', 'Critical Thinking'],
+    title: { en: 'APIs and integrations', pt: 'APIs e integrações' },
+    skills: [
+      'Node.js',
+      { en: 'REST APIs', pt: 'APIs REST' },
+      'GraphQL (Shopify)',
+      { en: 'Webhooks and queues', pt: 'Webhooks e filas' },
+      'C#',
+    ],
+  },
+  {
+    title: { en: 'Data', pt: 'Dados' },
+    skills: ['PostgreSQL (Prisma, RLS, migrations)', 'SQL Server', 'NoSQL (Firestore)'],
+  },
+  {
+    title: { en: 'Cloud', pt: 'Nuvem' },
+    skills: [
+      { en: 'AWS (S3, hosting)', pt: 'AWS (S3, hospedagem)' },
+      'Cloudflare (R2, DNS)',
+      'Firebase',
+      'Supabase',
+    ],
+  },
+  {
+    title: { en: 'AI-assisted development', pt: 'Desenvolvimento assistido por IA' },
+    skills: [
+      { en: 'Daily use of coding agents, with per-project rules', pt: 'Uso diário de agentes de código, com regras por projeto' },
+    ],
+  },
+  {
+    title: { en: 'Collaboration', pt: 'Colaboração' },
+    skills: [
+      { en: 'Mentoring', pt: 'Mentoria' },
+      { en: 'Technical documentation', pt: 'Documentação técnica' },
+      { en: 'Product and design partnership', pt: 'Parceria com produto e design' },
+      { en: 'Multicultural teams', pt: 'Times multiculturais' },
+      'Jira',
+    ],
   },
   {
     title: { en: 'Languages', pt: 'Idiomas' },

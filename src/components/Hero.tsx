@@ -1,8 +1,19 @@
 import { ArrowDown, MapPin, ArrowUpRight } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { useI18n } from '../i18n/I18nContext';
+import type { TKey } from '../i18n/translations';
 
-const BADGES = ['Angular', 'React', 'Next.js', 'TypeScript', 'A11y (WCAG)'];
+// Concepts (not tools): the stack is already the headline above.
+const CHIPS: TKey[] = [
+  'hero_chip_performance',
+  'hero_chip_unit_tests',
+  'hero_chip_e2e_tests',
+  'hero_chip_accessibility',
+  'hero_chip_cicd',
+  'hero_chip_ai',
+  'hero_chip_apis',
+  'hero_chip_databases',
+];
 
 export function Hero() {
   const { t } = useI18n();
@@ -15,6 +26,14 @@ export function Hero() {
     transition: { duration: 0.6, delay, ease: 'easeOut' as const },
   });
 
+  // The scroll hint animates on mount (not on enter-viewport): it must already
+  // be visible on first load, since it only makes sense before scrolling.
+  const hintFade = {
+    initial: reduceMotion ? undefined : { opacity: 0, y: 24 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, delay: 0.5, ease: 'easeOut' as const },
+  };
+
   return (
     <section id="top" className="relative flex min-h-screen items-center overflow-hidden">
       {/* Ambient glow */}
@@ -23,7 +42,7 @@ export function Hero() {
         className="pointer-events-none absolute -top-40 left-1/2 h-120 w-180 -translate-x-1/2 rounded-full bg-accent/10 blur-[140px]"
       />
 
-      <div className="container-portfolio relative py-28">
+      <div className="container-portfolio relative pt-28 pb-20">
         <div className="grid items-center gap-12 lg:grid-cols-[1.5fr_1fr]">
           <div>
             <motion.div {...fadeUp(0)} className="flex items-center gap-5">
@@ -54,7 +73,7 @@ export function Hero() {
               className="mt-6 text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl"
             >
               Thiago Madeira
-              <span className="block bg-linear-to-r from-accent to-accent-2 bg-clip-text text-transparent">
+              <span className="block bg-linear-to-r from-accent to-accent-2 bg-clip-text text-3xl text-transparent sm:text-5xl">
                 {t('hero_role')}
               </span>
             </motion.h1>
@@ -69,16 +88,12 @@ export function Hero() {
                 {t('hero_location')}
               </span>
               <span>{t('hero_languages')}</span>
-              <span className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
-                {t('hero_available')}
-              </span>
             </motion.div>
 
             <motion.div {...fadeUp(0.35)} className="mt-8 flex flex-wrap gap-3">
-              {BADGES.map((badge) => (
-                <span key={badge} className="chip">
-                  {badge}
+              {CHIPS.map((key) => (
+                <span key={key} className="chip">
+                  {t(key)}
                 </span>
               ))}
             </motion.div>
@@ -122,16 +137,16 @@ export function Hero() {
             </div>
           </motion.div>
         </div>
-
-        <motion.div {...fadeUp(0.5)} className="mt-12 flex justify-center md:mt-24">
-          <a href="#about" className="flex flex-col items-center gap-2 text-muted transition-colors hover:text-foreground" aria-label={t('hero_scroll')}>
-            <span className="font-mono text-xs uppercase tracking-[0.2em]">{t('hero_scroll')}</span>
-            <motion.span animate={{ y: [0, 6, 0] }} transition={{ duration: 1.6, repeat: Infinity }}>
-              <ArrowDown size={16} />
-            </motion.span>
-          </a>
-        </motion.div>
       </div>
+
+      <motion.div {...hintFade} className="absolute inset-x-0 bottom-6 flex justify-center">
+        <a href="#about" className="flex flex-col items-center gap-2 text-muted transition-colors hover:text-foreground" aria-label={t('hero_scroll')}>
+          <span className="font-mono text-xs uppercase tracking-[0.2em]">{t('hero_scroll')}</span>
+          <motion.span animate={{ y: [0, 6, 0] }} transition={{ duration: 1.6, repeat: Infinity }}>
+            <ArrowDown size={16} />
+          </motion.span>
+        </a>
+      </motion.div>
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import { Briefcase, Globe2, Building2, Rocket } from 'lucide-react';
+import { Briefcase, Building2, ShieldCheck, Users } from 'lucide-react';
 import { useI18n } from '../i18n/I18nContext';
 import { Section } from './Section';
 
@@ -7,9 +7,9 @@ export function About() {
 
   const facts = [
     { icon: Briefcase, value: '7+', label: t('about_fact_exp') },
-    { icon: Globe2, value: 'C1', label: t('about_fact_global') },
     { icon: Building2, value: '2', label: t('about_fact_clients') },
-    { icon: Rocket, value: '10+', label: t('about_fact_products') },
+    { icon: ShieldCheck, value: '90%+', label: t('about_fact_coverage') },
+    { icon: Users, value: '3', label: t('about_fact_mentored') },
   ];
 
   return (

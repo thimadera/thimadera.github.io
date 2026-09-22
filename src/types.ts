@@ -13,6 +13,11 @@ export interface DatePoint {
   year: number;
 }
 
+/** A bullet point. `label` is an optional bold lead-in (e.g. project name + stack). */
+export interface Highlight extends LocalizedString {
+  label?: LocalizedString;
+}
+
 export interface ExperienceEntry {
   /** Employer / education institution name. */
   company: LocalizedString;
@@ -25,10 +30,14 @@ export interface ExperienceEntry {
   location?: LocalizedString;
   /** True when this entry is a sub-allocation inside a company. */
   nested?: boolean;
+  /** Nested entry titled by its role (e.g. a promotion inside one company) instead of the company. */
+  roleAsTitle?: boolean;
   current?: boolean;
   /** Optional badge, e.g. "Education". */
   badge?: LocalizedString;
-  highlights: LocalizedString[];
+  /** Optional short description shown above the highlights. */
+  summary?: LocalizedString;
+  highlights: Highlight[];
 }
 
 export interface ProjectLink {

@@ -2,19 +2,24 @@ import type { LocalizedString } from '../types';
 
 /** Single source of truth for contact info - used by the site and the generated resume PDF. */
 export interface ContactItem {
-  kind: 'email' | 'phone';
+  kind: 'email';
   value: string;
   href: string;
 }
 
+// The phone number is intentionally not listed: email and LinkedIn are enough
+// for remote roles, and a public number only attracts spam.
 export const CONTACT_ITEMS: ContactItem[] = [
   { kind: 'email', value: 'thiagoemadeira@gmail.com', href: 'mailto:thiagoemadeira@gmail.com' },
-  { kind: 'phone', value: '+55 15 92000-4956', href: 'tel:+5515920004956' },
 ];
 
-export const SOCIALS: { name: string; url: string }[] = [
-  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/thimadera/' },
-  { name: 'GitHub', url: 'https://github.com/thimadera' },
+/**
+ * `professional` socials also go to the resume PDF and the SEO structured
+ * data; the others only appear on the site.
+ */
+export const SOCIALS: { name: string; url: string; professional?: boolean }[] = [
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/thimadera/', professional: true },
+  { name: 'GitHub', url: 'https://github.com/thimadera', professional: true },
   { name: 'Instagram', url: 'https://instagram.com/thimadera' },
 ];
 

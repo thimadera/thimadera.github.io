@@ -14,7 +14,7 @@ export function Experience() {
         {EXPERIENCE.map((entry, index) => {
           return (
           <motion.li
-            key={`${entry.company.en}-${entry.start.year}-${entry.start.month ?? 0}`}
+            key={`${entry.company.en}-${entry.role.en}-${entry.start.year}-${entry.start.month ?? 0}`}
             initial={reduceMotion ? undefined : { opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-60px' }}
@@ -33,7 +33,7 @@ export function Experience() {
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                 <h3 className="text-lg font-semibold tracking-tight">
                   {entry.nested && <span className="mr-1 text-accent">↳</span>}
-                  {l(entry.company)}
+                  {l(entry.roleAsTitle ? entry.role : entry.company)}
                 </h3>
                 {entry.badge && (
                   <span className="chip border-accent/30 text-accent">{l(entry.badge)}</span>
@@ -41,15 +41,25 @@ export function Experience() {
                 <span className="font-mono text-xs text-muted">{formatPeriod(entry.start, entry.end, locale)}</span>
               </div>
 
-              <p className="mt-1 text-sm font-medium text-accent">{l(entry.role)}</p>
+              {!entry.roleAsTitle && l(entry.role) !== '' && (
+                <p className="mt-1 text-sm font-medium text-accent">{l(entry.role)}</p>
+              )}
               {entry.location && <p className="mt-1 text-xs text-muted">{l(entry.location)}</p>}
+              {entry.summary && (
+                <p className="mt-3 text-sm leading-relaxed text-foreground/85">{l(entry.summary)}</p>
+              )}
 
               {entry.highlights.length > 0 && (
                 <ul className="mt-3 space-y-2">
                   {entry.highlights.map((highlight) => (
                     <li key={highlight.en} className="flex gap-2.5 text-sm leading-relaxed text-muted">
                       <span className="mt-1.75 h-1 w-1 shrink-0 rounded-full bg-accent/70" aria-hidden />
-                      {l(highlight)}
+                      <span>
+                        {highlight.label && (
+                          <strong className="font-medium text-foreground">{l(highlight.label)}: </strong>
+                        )}
+                        {l(highlight)}
+                      </span>
                     </li>
                   ))}
                 </ul>

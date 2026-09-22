@@ -305,24 +305,6 @@ function ProjectsCarousel({
     return () => cancelAnimationFrame(rafId);
   }, [reduceMotion]);
 
-  // Vertical wheel over the carousel scrolls it horizontally instead of the page.
-  useEffect(() => {
-    const el = trackRef.current;
-    if (!el) return;
-
-    const onWheel = (e: WheelEvent) => {
-      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
-      if (e.deltaY < 0 && el.scrollLeft <= 0) return;
-      e.preventDefault();
-      el.scrollLeft += e.deltaY;
-      pause();
-      scheduleResume();
-    };
-
-    el.addEventListener('wheel', onWheel, { passive: false });
-    return () => el.removeEventListener('wheel', onWheel);
-  }, [pause, scheduleResume]);
-
   const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
     if (e.pointerType !== 'mouse' || e.button !== 0) return;
     const el = trackRef.current;
