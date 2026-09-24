@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Strict Mode — LinkedIn card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.13/dist/html-to-image.min.js"></script>
+    <style>
+      :root {
+        --bg: #0a0a0b;
+        --surface: #121215;
+        --surface-2: #1a1a1f;
+        --border: rgba(255, 255, 255, 0.08);
+        --fg: #f4f4f5;
+        --muted: #a1a1aa;
+        --accent: #34d399;
+        --accent-2: #22d3ee;
+        --red: #f87171;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #000;
+        min-height: 100vh;
+        font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* ---------- toolbar (not exported) ---------- */
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        padding: 16px;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        width: 100%;
+        justify-content: center;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .toolbar button {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        padding: 8px 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(52, 211, 153, 0.4);
+        background: var(--surface-2);
+        color: var(--accent);
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+
+      .toolbar button:hover {
+        background: var(--accent);
+        color: #052e22;
+      }
+
+      .toolbar button.copy {
+        color: var(--muted);
+        border-color: var(--border);
+      }
+      .toolbar button.copy:hover {
+        background: var(--surface-2);
+        color: var(--fg);
+      }
+
+      /* ---------- stage ---------- */
+      .stage {
+        padding: 40px;
+      }
+      .scaler {
+        transform-origin: top left;
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+      }
+
+      /* ---------- canvas: exported element (1080x1080) ---------- */
+      .canvas {
+        width: 1080px;
+        height: 1080px;
+        background:
+          radial-gradient(900px 500px at 85% -10%, rgba(52, 211, 153, 0.1), transparent 60%),
+          radial-gradient(700px 500px at 0% 110%, rgba(34, 211, 238, 0.07), transparent 60%),
+          var(--bg);
+        border: 1px solid var(--border);
+        padding: 48px 56px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .eyebrow {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 19px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        font-size: 52px;
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+        font-weight: 700;
+        color: var(--fg);
+        margin-bottom: 12px;
+      }
+
+      h1 .accent {
+        color: var(--accent);
+      }
+
+      .subtitle {
+        font-size: 24px;
+        color: var(--muted);
+        font-weight: 400;
+        margin-bottom: 34px;
+      }
+
+      .subtitle .flow {
+        color: var(--fg);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 21px;
+      }
+
+      /* ---------- editor card ---------- */
+      .editor {
+        flex: 1;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+      }
+
+      .editor-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 20px;
+        background: var(--surface-2);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .dot {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+      }
+      .dot.r {
+        background: #ff5f57;
+      }
+      .dot.y {
+        background: #febc2e;
+      }
+      .dot.g {
+        background: #28c840;
+      }
+
+      .filename {
+        margin-left: 14px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 17px;
+        color: var(--muted);
+      }
+
+      .panels {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .panel {
+        padding: 22px 26px;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .panel + .panel {
+        border-left: 1px solid var(--border);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        align-self: flex-start;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 17px;
+        font-weight: 600;
+        padding: 6px 15px;
+        border-radius: 999px;
+        margin-bottom: 18px;
+      }
+
+      .badge.bad {
+        color: var(--red);
+        background: rgba(248, 113, 113, 0.1);
+        border: 1px solid rgba(248, 113, 113, 0.35);
+      }
+      .badge.good {
+        color: var(--accent);
+        background: rgba(52, 211, 153, 0.1);
+        border: 1px solid rgba(52, 211, 153, 0.35);
+      }
+
+      .code {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 19px;
+        line-height: 1.65;
+        color: var(--fg);
+        white-space: pre;
+      }
+
+      .kw {
+        color: #c084fc;
+      }
+      .fn {
+        color: var(--accent-2);
+      }
+      .cmp {
+        color: var(--accent);
+      }
+      .str {
+        color: #fbbf24;
+      }
+      .mut {
+        color: var(--muted);
+      }
+
+      .bad-line {
+        background: rgba(248, 113, 113, 0.08);
+        border-radius: 8px;
+        margin: 0 -12px;
+        padding: 0 12px;
+      }
+      .good-line {
+        background: rgba(52, 211, 153, 0.08);
+        border-radius: 8px;
+        margin: 0 -12px;
+        padding: 0 12px;
+      }
+
+      /* ---------- fake console ---------- */
+      .console {
+        margin-top: 18px;
+        background: #0d0d10;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 12px 16px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      .console .label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 6px;
+        display: block;
+      }
+      .console .dup {
+        color: var(--red);
+      }
+      .console .single {
+        color: var(--accent);
+      }
+
+      .caption {
+        margin-top: auto;
+        padding-top: 18px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 15.5px;
+        line-height: 1.5;
+        color: var(--muted);
+        border-top: 1px dashed var(--border);
+      }
+      .caption .err {
+        color: var(--red);
+      }
+      .caption .ok {
+        color: var(--accent);
+      }
+
+      .footer {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 17px;
+        color: var(--muted);
+      }
+      .footer .site {
+        color: var(--accent);
+      }
+
+      /* ---------- post caption (not exported) ---------- */
+      .post {
+        width: 400px;
+        flex-shrink: 0;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px 28px;
+      }
+      .post .label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 14px;
+        display: block;
+      }
+      .post pre {
+        font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+        font-size: 15.5px;
+        line-height: 1.6;
+        color: var(--fg);
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <button id="export">↓ Export JPEG (1080×1080 @2x)</button>
+      <button class="copy" id="copy">⧉ Copy caption</button>
+    </div>
+
+    <div class="stage">
+      <div class="scaler" id="scaler">
+        <div class="canvas" id="card">
+          <div class="eyebrow">react · did you know?</div>
+
+          <h1>
+            Your effect runs <span class="accent">twice</span> in dev.<br />That's not a bug.
+          </h1>
+
+          <p class="subtitle">
+            Strict Mode does <span class="flow">mount → cleanup → mount</span> on purpose.
+          </p>
+
+          <div class="editor">
+            <div class="editor-bar">
+              <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+              <span class="filename">ChatRoom.tsx</span>
+            </div>
+
+            <div class="panels">
+              <!-- LEFT: missing cleanup -->
+              <div class="panel">
+                <span class="badge bad">✕ &nbsp;no cleanup</span>
+                <!-- prettier-ignore -->
+                <div class="code"><span class="kw">import</span> { <span class="fn">useEffect</span> } <span class="kw">from</span> <span class="str">'react'</span>;
+
+<span class="fn">useEffect</span>(() <span class="kw">=></span> {
+  <span class="kw">const</span> socket = <span class="fn">connect</span>(roomId);
+<span class="bad-line">  <span class="mut">// missing cleanup…</span></span>
+}, [roomId]);</div>
+
+                <div class="console">
+                  <span class="label">console</span>
+                  <span class="dup">&gt; connected</span><br />
+                  <span class="dup">&gt; connected</span>
+                </div>
+
+                <p class="caption">
+                  <span class="err">✕ Two sockets open</span><br />The double mount just exposed a
+                  real leak.
+                </p>
+              </div>
+
+              <!-- RIGHT: with cleanup -->
+              <div class="panel">
+                <span class="badge good">✓ &nbsp;with cleanup</span>
+                <!-- prettier-ignore -->
+                <div class="code"><span class="kw">import</span> { <span class="fn">useEffect</span> } <span class="kw">from</span> <span class="str">'react'</span>;
+
+<span class="fn">useEffect</span>(() <span class="kw">=></span> {
+  <span class="kw">const</span> socket = <span class="fn">connect</span>(roomId);
+<span class="good-line">  <span class="kw">return</span> () <span class="kw">=></span> socket.<span class="fn">disconnect</span>();</span>
+}, [roomId]);</div>
+
+                <div class="console">
+                  <span class="label">console</span>
+                  <span class="single">&gt; connected</span><br />
+                  <span class="mut">&gt; disconnected → connected</span>
+                </div>
+
+                <p class="caption">
+                  <span class="ok">✓ No leak</span><br />Cleanup makes the double mount a no-op.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer">
+            <span>// strict mode isn't the bug — it's the bug detector</span>
+            <span class="site">thimadera.github.io</span>
+          </div>
+        </div>
+
+        <div class="post">
+          <span class="label">// post caption — copy &amp; paste</span>
+          <!-- prettier-ignore -->
+          <pre id="caption">Your useEffect isn't broken. React is testing it.
+
+In development, Strict Mode runs your effects twice on purpose: mount → cleanup → mount again.
+
+Most devs see the double call and reach for a useRef flag to "fix" it. That's backwards — the double run is exposing a real bug.
+
+If your effect subscribes to something without cleaning up, you now have two subscriptions. Two intervals. Two socket connections. In dev it looks weird. In production, it's a memory leak waiting for a remount.
+
+The fix is always the cleanup:
+
+useEffect(() => {
+  const socket = connect(roomId);
+  return () => socket.disconnect();
+}, [roomId]);
+
+With proper cleanup, the double mount is a no-op. Without it, your component leaks every time it remounts — and React is remounting components more than ever (hello, &lt;Activity&gt;).
+
+Strict Mode isn't the bug. It's the bug detector.
+
+Did you also try to "fix" the double effect before understanding it?
+
+#react #frontend #javascript #typescript</pre>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const card = document.getElementById('card');
+      const scaler = document.getElementById('scaler');
+
+      function fit() {
+        const totalWidth = 1080 + 24 + 400; // canvas + gap + caption
+        const scale = Math.min(
+          (window.innerWidth - 80) / totalWidth,
+          (window.innerHeight - 160) / 1080,
+          1,
+        );
+        scaler.style.zoom = scale;
+      }
+
+      document.getElementById('export').addEventListener('click', async () => {
+        const btn = document.getElementById('export');
+        btn.textContent = 'exporting…';
+        try {
+          const dataUrl = await htmlToImage.toJpeg(card, {
+            pixelRatio: 2,
+            quality: 0.95,
+            backgroundColor: '#0a0a0b',
+          });
+          const a = document.createElement('a');
+          a.download = 'react-strict-mode-1x1.jpg';
+          a.href = dataUrl;
+          a.click();
+        } catch (e) {
+          alert('Export failed — check the console (usually a font/CORS issue).');
+          console.error(e);
+        }
+        btn.textContent = '↓ Export JPEG (1080×1080 @2x)';
+      });
+
+      document.getElementById('copy').addEventListener('click', async () => {
+        const btn = document.getElementById('copy');
+        await navigator.clipboard.writeText(
+          document.getElementById('caption').innerText,
+        );
+        btn.textContent = '✓ copied!';
+        setTimeout(() => (btn.textContent = '⧉ Copy caption'), 1500);
+      });
+
+      window.addEventListener('resize', fit);
+      fit();
+    </script>
+  </body>
+</html>
