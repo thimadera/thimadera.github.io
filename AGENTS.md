@@ -11,7 +11,7 @@
 
 - `vite.config.ts` uses `base: './'` so the build works on GitHub Pages subpaths.
 - The site is dark-only (no light theme) by design; accent color is defined in `src/index.css` (`@theme`).
-- Content is intentionally frontend-focused. Backend technologies appear only as historical context in `src/data/experience.ts`.
+- Positioning is fullstack: Angular (deepest experience), React (current day-to-day at Brasa and what remote/foreign roles ask for most), Node.js (main backend stack). Other backend tech (e.g. C#) appears only as historical context in `src/data/experience.ts`.
 - Data (dates, company names) must stay consistent with the LinkedIn profile - recruiters cross-check.
 - The resume PDF is generated client-side (button in Contact) from the same data files as the site (`src/data/experience.ts`, `src/data/skills.ts`, `src/data/contact.ts`) via `@react-pdf/renderer` (see `src/resume/ResumeDocument.tsx`). There are no static PDFs in `public/` - do not add any; edit the data files instead.
 - Deployment: GitHub Actions workflow in `.github/workflows/deploy.yml` (Pages source must be set to "GitHub Actions" in repo settings).
