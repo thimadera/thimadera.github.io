@@ -10,7 +10,7 @@ export interface ContactItem {
 // The phone number is intentionally not listed: email and LinkedIn are enough
 // for remote roles, and a public number only attracts spam.
 export const CONTACT_ITEMS: ContactItem[] = [
-  { kind: 'email', value: 'thiagoemadeira@gmail.com', href: 'mailto:thiagoemadeira@gmail.com' },
+  { kind: 'email', value: 'thidesui@gmail.com', href: 'mailto:thidesui@gmail.com' },
 ];
 
 /**

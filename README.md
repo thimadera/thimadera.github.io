@@ -67,7 +67,7 @@ npm run build    # production build
 ## 📲 Connect with me
 
 - [LinkedIn](https://www.linkedin.com/in/thimadera/) · [GitHub](https://github.com/thimadera) · [Portfolio](https://thimadera.github.io/)
-- ✉️ thiagoemadeira@gmail.com
+- ✉️ thidesui@gmail.com
 
 ---
 

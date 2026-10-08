@@ -10,7 +10,7 @@ My toolbox: Angular, React, Next.js, TypeScript, single-spa, Node.js, PostgreSQL
 
 I also mentor junior developers and document setup and migration processes for the team.
 
-I'm looking for Senior Software Engineer roles on product teams in the US or Europe. I work remotely from Sorocaba, Brazil (GMT-3), with full overlap with US East Coast business hours, in English (C1) or Portuguese. Reach me here on LinkedIn or at thiagoemadeira@gmail.com.
+I'm looking for Senior Software Engineer roles on product teams in the US or Europe. I work remotely from Sorocaba, Brazil (GMT-3), with full overlap with US East Coast business hours, in English (C1) or Portuguese. Reach me here on LinkedIn or at thidesui@gmail.com.
 
 Portfolio: thimadera.github.io
 GitHub: github.com/thimadera
