@@ -63,6 +63,7 @@ export const SKILLS: SkillCategory[] = [
     skills: [
       'Node.js',
       { en: 'REST APIs', pt: 'APIs REST' },
+      'OAuth 2.0',
       'GraphQL (Shopify)',
       'Shopify (Liquid)',
       { en: 'Webhooks and queues', pt: 'Webhooks e filas' },
@@ -83,8 +84,10 @@ export const SKILLS: SkillCategory[] = [
     ],
   },
   {
-    title: { en: 'AI-assisted development', pt: 'Desenvolvimento assistido por IA' },
+    title: { en: 'AI', pt: 'IA' },
     skills: [
+      { en: 'Generative AI / LLM-powered features (Gemini API)', pt: 'IA generativa / features com LLM (API Gemini)' },
+      'MCP servers',
       { en: 'Daily use of coding agents, with per-project rules', pt: 'Uso diário de agentes de código, com regras por projeto' },
     ],
   },

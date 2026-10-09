@@ -21,11 +21,11 @@ export const PROJECTS: Project[] = [
     name: 'Sidra',
     slug: 'sidra',
     description: {
-      en: 'Shipping automation for e-commerce ERPs: invoiced orders sync automatically, shipping labels are generated as soon as the invoice is authorized and picking lists come ready to print. I started rewriting the ERP from scratch, then switched to a modular migration - lower risk than a full rewrite - and Sidra is that evolution today. Multi-tenant SaaS processing 200+ orders a day on average - 800+ on peak days - automating steps that used to require manual work in Olist. It also includes an artwork module integrated with picking. Error tracking runs on a custom, minimal Sentry client (raw envelope API, no SDK).',
-      pt: 'Automação de expedição para ERPs de e-commerce: pedidos faturados sincronizam sozinhos, etiquetas são geradas assim que a nota é autorizada e separações saem prontas para impressão. Comecei reescrevendo o ERP do zero, mas mudei para uma migração modular - menos risco que uma reescrita completa - e o Sidra é essa evolução hoje. SaaS multi-tenant que processa em média 200+ pedidos por dia - mais de 800 em dias de pico - automatizando etapas que antes dependiam de trabalho manual na Olist. Inclui também um módulo de artes integrado à separação. O error tracking roda em um cliente Sentry próprio e mínimo (API de envelope, sem SDK).',
+      en: 'Shipping automation for e-commerce ERPs: invoiced orders sync automatically, shipping labels are generated as soon as the invoice is authorized and picking lists come ready to print. I started rewriting the ERP from scratch, then switched to a modular migration - lower risk than a full rewrite - and Sidra is that evolution today. Multi-tenant SaaS processing 200+ orders a day on average - 800+ on peak days - automating steps that used to require manual work in Olist. It owns its domain model (orders, invoices, catalog, stock) and plugs each marketplace in as an adapter: OAuth apps for Olist, Shopify and TikTok Shop, with webhook order sync and an outbound catalog-push worker. Labels run through a PDF pipeline (merge, draw, print), and an artwork module is integrated with picking. Error tracking runs on a custom, minimal Sentry client (raw envelope API, no SDK).',
+      pt: 'Automação de expedição para ERPs de e-commerce: pedidos faturados sincronizam sozinhos, etiquetas são geradas assim que a nota é autorizada e separações saem prontas para impressão. Comecei reescrevendo o ERP do zero, mas mudei para uma migração modular - menos risco que uma reescrita completa - e o Sidra é essa evolução hoje. SaaS multi-tenant que processa em média 200+ pedidos por dia - mais de 800 em dias de pico - automatizando etapas que antes dependiam de trabalho manual na Olist. Ele é dono do próprio modelo de domínio (pedidos, notas fiscais, catálogo, estoque) e pluga cada marketplace como um adaptador: apps OAuth para Olist, Shopify e TikTok Shop, com sincronização de pedidos por webhook e um worker de push de catálogo. Etiquetas passam por um pipeline de PDF (merge, desenho, impressão) e um módulo de artes é integrado à separação. O error tracking roda em um cliente Sentry próprio e mínimo (API de envelope, sem SDK).',
     },
     year: 2026,
-    tags: ['React', 'Vite', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'RLS', 'Sentry'],
+    tags: ['React', 'Vite', 'TypeScript', 'Node.js', 'Supabase', 'Prisma', 'RLS', 'Sentry', 'OAuth', 'Playwright'],
     links: [{ label: { en: 'Live app', pt: 'App no ar' }, url: 'https://sidra-three.vercel.app/' }],
   },
   {
@@ -90,11 +90,11 @@ export const PROJECTS: Project[] = [
     name: 'Cafof.in',
     slug: 'cafof-in',
     description: {
-      en: 'Everything for your home in one place: chores, plants, grocery list, recipes, fridge photos and house rules - realtime sync, invites and daily push reminders. An app I use every day.',
-      pt: 'Tudo para a casa em um só lugar: tarefas, plantas, lista de compras, receitas, fotos da geladeira e regras da casa - sincronização em tempo real, convites e lembretes diários por notificação push. Um app que uso no dia a dia.',
+      en: 'Everything for your home in one place: chores, plants, grocery list, recipes, fridge photos and house rules - realtime sync, invites and daily push reminders. The plant catalog identifies a species from a photo and fills in its care data via Gemini (structured JSON, model fallback on quota errors). An app I use every day.',
+      pt: 'Tudo para a casa em um só lugar: tarefas, plantas, lista de compras, receitas, fotos da geladeira e regras da casa - sincronização em tempo real, convites e lembretes diários por notificação push. O catálogo de plantas identifica a espécie por foto e preenche os dados de cuidado via Gemini (JSON estruturado, fallback de modelo em erro de cota). Um app que uso no dia a dia.',
     },
     year: 2026,
-    tags: ['Vite', 'React', 'TypeScript', 'Supabase', 'Cloudflare R2', 'PWA'],
+    tags: ['Vite', 'React', 'TypeScript', 'Supabase', 'Cloudflare R2', 'PWA', 'Gemini API'],
     links: [{ label: { en: 'Personal project', pt: 'Projeto pessoal' }, url: 'https://cafof.in/' }],
   },
   {

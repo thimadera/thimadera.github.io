@@ -195,8 +195,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
           en: 'Integrations (Olist, Shopify, Shopee, TikTok Shop)',
           pt: 'Integrações (Olist, Shopify, Shopee, TikTok Shop)',
         },
-        en: 'Connected each platform to internal systems via APIs and webhooks.',
-        pt: 'Conectei cada plataforma aos sistemas internos por APIs e webhooks.',
+        en: 'Connected each platform to internal systems via OAuth apps, APIs and webhooks.',
+        pt: 'Conectei cada plataforma aos sistemas internos por apps OAuth, APIs e webhooks.',
       },
       {
         label: {
