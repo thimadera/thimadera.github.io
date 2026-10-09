@@ -26,7 +26,7 @@ export const SKILLS: SkillCategory[] = [
     title: { en: 'UI and accessibility', pt: 'UI e acessibilidade' },
     skills: [
       'Design systems',
-      { en: 'Accessibility', pt: 'Acessibilidade' },
+      { en: 'Accessibility (WCAG 2.1 AA)', pt: 'Acessibilidade (WCAG 2.1 AA)' },
       'Styled Components',
       'Tailwind CSS',
       'SCSS',
@@ -64,7 +64,7 @@ export const SKILLS: SkillCategory[] = [
       'Node.js',
       { en: 'REST APIs', pt: 'APIs REST' },
       'OAuth 2.0',
-      'GraphQL (Shopify)',
+      'GraphQL APIs (Shopify Storefront)',
       'Shopify (Liquid)',
       { en: 'Webhooks and queues', pt: 'Webhooks e filas' },
       'C#',
@@ -72,7 +72,7 @@ export const SKILLS: SkillCategory[] = [
   },
   {
     title: { en: 'Data', pt: 'Dados' },
-    skills: ['PostgreSQL (Prisma, RLS, migrations)', 'SQL Server', 'NoSQL (Firestore)'],
+    skills: ['PostgreSQL (Prisma, RLS, migrations)', 'RBAC (multi-tenant)', 'SQL Server', 'NoSQL (Firestore)'],
   },
   {
     title: { en: 'Cloud', pt: 'Nuvem' },

@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint src --ext .ts,.tsx",
-    "format": "prettier --write 'src/**/*.{ts,tsx,css,md,json}'"
+    "format": "prettier --write 'src/**/*.{ts,tsx,css,md,json}'",
+    "export-resume": "node scripts/export-resume.mjs"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.8",

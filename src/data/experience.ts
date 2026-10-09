@@ -61,8 +61,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
           en: 'Quality (Sonar, ESLint, Prettier, unit tests)',
           pt: 'Qualidade (Sonar, ESLint, Prettier, testes unitários)',
         },
-        en: 'Worked under strict ESLint and Sonar rules, including accessibility, bringing the components I created or refactored to 90%+ unit test coverage.',
-        pt: 'Trabalhei com regras rígidas de ESLint e Sonar, incluindo acessibilidade, levando os componentes que criei ou refatorei a mais de 90% de cobertura de testes unitários.',
+        en: 'Worked under strict ESLint and Sonar rules, including accessibility (WCAG 2.1 AA), bringing the components I created or refactored to 90%+ unit test coverage.',
+        pt: 'Trabalhei com regras rígidas de ESLint e Sonar, incluindo acessibilidade (WCAG 2.1 AA), levando os componentes que criei ou refatorei a mais de 90% de cobertura de testes unitários.',
       },
       {
         label: {
@@ -184,6 +184,14 @@ export const EXPERIENCE: ExperienceEntry[] = [
       },
       {
         label: {
+          en: 'Multi-tenant RBAC (roles + Postgres RLS)',
+          pt: 'RBAC multi-tenant (papéis + RLS no Postgres)',
+        },
+        en: 'Designed the role-based access control: viewer/operator/owner per company plus a global super-admin, driven by a single permission catalog shared between the React client and the edge API, enforced twice - in the UI and in Postgres RLS. The same user can be an owner in one company and a viewer in another.',
+        pt: 'Desenhei o controle de acesso por papéis: viewer/operator/owner por empresa mais um super-admin global, guiado por um catálogo único de permissões compartilhado entre o cliente React e a API edge, com enforcement duplo - na UI e no RLS do Postgres. O mesmo usuário pode ser owner numa empresa e viewer em outra.',
+      },
+      {
+        label: {
           en: 'Observability (custom Sentry client)',
           pt: 'Observabilidade (cliente Sentry próprio)',
         },
@@ -195,8 +203,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
           en: 'Integrations (Olist, Shopify, Shopee, TikTok Shop)',
           pt: 'Integrações (Olist, Shopify, Shopee, TikTok Shop)',
         },
-        en: 'Connected each platform to internal systems via OAuth apps, APIs and webhooks.',
-        pt: 'Conectei cada plataforma aos sistemas internos por apps OAuth, APIs e webhooks.',
+        en: "Connected each platform to internal systems via OAuth apps, APIs and webhooks. Integrated the Shopify Admin GraphQL API through a hand-rolled fetch client (no SDK): reads each response's cost and throttle status to pause before hitting the rate-limit bucket, and classifies errors as throttled, denied, user or GraphQL.",
+        pt: 'Conectei cada plataforma aos sistemas internos por apps OAuth, APIs e webhooks. Integrei a API GraphQL Admin da Shopify com um cliente próprio em fetch (sem SDK): lê o custo e o throttle de cada resposta para pausar antes de estourar o rate limit, e classifica erros em throttled, denied, user ou GraphQL.',
       },
       {
         label: {
